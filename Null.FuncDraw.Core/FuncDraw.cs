@@ -11,21 +11,21 @@ namespace TestForm.Core
     {
         public static Point GetPointFromCoordinates(double xCoord, double yCoord, int xOffset, int yOffset, double scale)
         {
-            return new Point((int)(xCoord * scale + xOffset), (int)(yCoord * scale + yOffset));
+            return new Point((int)(xCoord * scale + xOffset), (int)(-yCoord * scale + yOffset));
         }
         public static Point GetPointFromCoordinates(PointF coords, Point offset, double scale)
         {
-            return new Point((int)(coords.X * scale + offset.X), (int)(coords.Y * scale + offset.Y));
+            return new Point((int)(coords.X * scale + offset.X), (int)(-coords.Y * scale + offset.Y));
         }
         public static void GetCoordinatesFromPoint(int x, int y, int xOffset, int yOffset, double scale, out double xCoord, out double yCoord)
         {
             xCoord = (x - xOffset) / scale;
-            yCoord = -(y - yOffset) / scale;
+            yCoord = -((y - yOffset) / scale);
             return;
         }
-        public static int GetNumberFromPixelLength(int length, double scale)
+        public static double GetNumberFromPixelLength(int length, double scale)
         {
-            return (int)(length / scale);
+            return length / scale;
         }
         public static void DrawFunc(Func<double, double> func, IEnumerable<double> inputs, Graphics graphics, Pen pen, int xOffset, int yOffset, double scale)
         {
@@ -47,7 +47,7 @@ namespace TestForm.Core
             Action<Point, double> drawText;
 
             if (text)
-                drawText = (point, num) => graphics.DrawString(num.ToString(), font, brush, point);
+                drawText = (point, num) => graphics.DrawString(num.ToString("F2"), font, brush, point);
             else
                 drawText = (point, num) => { };
 

@@ -43,9 +43,15 @@ namespace TestForm
             this.yOffsetTip = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.shaftButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.stepBar = new System.Windows.Forms.TrackBar();
+            this.stepTip = new System.Windows.Forms.Label();
+            this.autoRefreshBox = new System.Windows.Forms.CheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.scaleBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xOffsetBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yOffsetBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stepBar)).BeginInit();
             this.SuspendLayout();
             // 
             // drawButton
@@ -70,6 +76,13 @@ namespace TestForm
             this.paintPanel.Name = "paintPanel";
             this.paintPanel.Size = new System.Drawing.Size(695, 426);
             this.paintPanel.TabIndex = 1;
+            this.paintPanel.Click += new System.EventHandler(this.paintPanel_Click);
+            this.paintPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.paintPanel_Paint);
+            this.paintPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.paintPanel_MouseDown);
+            this.paintPanel.MouseLeave += new System.EventHandler(this.paintPanel_MouseLeave);
+            this.paintPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.paintPanel_MouseMove);
+            this.paintPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.paintPanel_MouseUp);
+            this.paintPanel.Resize += new System.EventHandler(this.paintPanel_Resize);
             // 
             // clearButton
             // 
@@ -86,7 +99,8 @@ namespace TestForm
             // 
             this.scaleBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.scaleBar.Location = new System.Drawing.Point(713, 67);
-            this.scaleBar.Maximum = 50;
+            this.scaleBar.Maximum = 1000;
+            this.scaleBar.Minimum = 1;
             this.scaleBar.Name = "scaleBar";
             this.scaleBar.Size = new System.Drawing.Size(269, 45);
             this.scaleBar.TabIndex = 3;
@@ -170,7 +184,7 @@ namespace TestForm
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(715, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -190,11 +204,85 @@ namespace TestForm
             this.shaftButton.UseVisualStyleBackColor = true;
             this.shaftButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.shaftButton_MouseDown);
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(713, 241);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Step";
+            // 
+            // stepBar
+            // 
+            this.stepBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.stepBar.Location = new System.Drawing.Point(713, 256);
+            this.stepBar.Maximum = 50;
+            this.stepBar.Minimum = 1;
+            this.stepBar.Name = "stepBar";
+            this.stepBar.Size = new System.Drawing.Size(269, 45);
+            this.stepBar.TabIndex = 15;
+            this.stepBar.Value = 1;
+            // 
+            // stepTip
+            // 
+            this.stepTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.stepTip.AutoSize = true;
+            this.stepTip.Location = new System.Drawing.Point(947, 241);
+            this.stepTip.Name = "stepTip";
+            this.stepTip.Size = new System.Drawing.Size(11, 12);
+            this.stepTip.TabIndex = 16;
+            this.stepTip.Text = "0";
+            // 
+            // autoRefreshBox
+            // 
+            this.autoRefreshBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.autoRefreshBox.AutoSize = true;
+            this.autoRefreshBox.Location = new System.Drawing.Point(811, 419);
+            this.autoRefreshBox.Name = "autoRefreshBox";
+            this.autoRefreshBox.Size = new System.Drawing.Size(96, 16);
+            this.autoRefreshBox.TabIndex = 17;
+            this.autoRefreshBox.Text = "Auto Refresh";
+            this.autoRefreshBox.UseVisualStyleBackColor = true;
+            this.autoRefreshBox.CheckedChanged += new System.EventHandler(this.autoRefreshBox_CheckedChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Math.Sin",
+            "Math.Cos",
+            "Math.Tan",
+            "Math.Asin",
+            "Math.Acos",
+            "Math.Atan",
+            "Math.Sinh",
+            "Math.Cosh",
+            "Math.Tanh",
+            "Math.Sqrt",
+            "Math.Log",
+            "Math.Log10",
+            "Math.Abs",
+            "Math.Exp"});
+            this.comboBox1.Location = new System.Drawing.Point(726, 307);
+            this.comboBox1.MaxDropDownItems = 100;
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(245, 20);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(994, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.autoRefreshBox);
+            this.Controls.Add(this.stepTip);
+            this.Controls.Add(this.stepBar);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.shaftButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.yOffsetTip);
@@ -209,11 +297,14 @@ namespace TestForm
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.paintPanel);
             this.Controls.Add(this.drawButton);
+            this.DoubleBuffered = true;
             this.Name = "TestForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.TestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.scaleBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xOffsetBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yOffsetBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stepBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,9 +315,6 @@ namespace TestForm
         private System.Windows.Forms.Button drawButton;
         private System.Windows.Forms.Panel paintPanel;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.TrackBar scaleBar;
-        private System.Windows.Forms.TrackBar xOffsetBar;
-        private System.Windows.Forms.TrackBar yOffsetBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -235,6 +323,14 @@ namespace TestForm
         private System.Windows.Forms.Label yOffsetTip;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button shaftButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label stepTip;
+        public System.Windows.Forms.TrackBar scaleBar;
+        public System.Windows.Forms.TrackBar xOffsetBar;
+        public System.Windows.Forms.TrackBar yOffsetBar;
+        public System.Windows.Forms.TrackBar stepBar;
+        private System.Windows.Forms.CheckBox autoRefreshBox;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

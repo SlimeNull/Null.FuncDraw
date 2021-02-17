@@ -133,23 +133,20 @@ namespace TestForm.Library
         }
         void Initialize(double start, double stop, double step)
         {
-            this.start = start;
-            this.stop = stop;
-            this.step = step;
-
-            this.current = start - step;
+            if (step == 0)
+                throw new ArgumentOutOfRangeException();
 
             if (start < stop)
             {
                 if (step <= 0)
-                    this.step *= -1;
+                    step *= -1;
                 checkMoveFunc = () => 
                     current < this.stop;
             }
             else if (start > stop)
             {
                 if (step >= 0)
-                    this.step *= -1;
+                    step *= -1;
                 checkMoveFunc = () => 
                     current > this.stop;
             }
@@ -157,6 +154,12 @@ namespace TestForm.Library
             {
                 checkMoveFunc = () => false;
             }
+
+            this.start = start;
+            this.stop = stop;
+            this.step = step;
+
+            this.current = start - step;
         }
 
         public object Current => current;
@@ -169,7 +172,7 @@ namespace TestForm.Library
 
         public void Dispose()
         {
-            
+            current = start;
         }
 
         public bool MoveNext()
