@@ -103,7 +103,7 @@ namespace TestForm
             // 
             this.scaleBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.scaleBar.Location = new System.Drawing.Point(713, 67);
-            this.scaleBar.Maximum = 1000;
+            this.scaleBar.Maximum = 5000;
             this.scaleBar.Minimum = 1;
             this.scaleBar.Name = "scaleBar";
             this.scaleBar.Size = new System.Drawing.Size(269, 45);
@@ -222,7 +222,7 @@ namespace TestForm
             // 
             this.stepBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.stepBar.Location = new System.Drawing.Point(713, 256);
-            this.stepBar.Maximum = 50;
+            this.stepBar.Maximum = 1000;
             this.stepBar.Minimum = 1;
             this.stepBar.Name = "stepBar";
             this.stepBar.Size = new System.Drawing.Size(269, 45);

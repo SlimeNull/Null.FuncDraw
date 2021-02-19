@@ -39,9 +39,9 @@ namespace TestForm
             xOffsetTip.DataBindings.Add(new Binding("Text", xOffsetBar, "Value"));
             yOffsetTip.DataBindings.Add(new Binding("Text", yOffsetBar, "Value"));
             moveTip.DataBindings.Add(new Binding("Text", moveBar, "Value"));
+            stepTip.DataBindings.Add(new Binding("Text", stepBar, "Value"));
 
             //var typeTransBinding1 = new Binding("Text", ViewModel, "Step");
-            //stepTip.DataBindings.Add(typeTransBinding1);
 
             Color paintColor = Color.FromArgb(0, 120, 215);
             g = Graphics.FromHwnd(paintPanel.Handle);
@@ -53,6 +53,10 @@ namespace TestForm
             autoRefreshTimer.Tick += (sender, e) =>
             {
                 DrawAllForce();
+                double number = FuncDraw.GetNumberFromPixel(5, ViewModel.Scale);
+                int param = (int)Clamp(1d / number, stepBar.Minimum, stepBar.Maximum);
+                this.Invoke((Action)(()=> stepBar.Value = param));
+                
             };
 
             paintPanel.MouseWheel += PaintPanel_MouseWheel;
