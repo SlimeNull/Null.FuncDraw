@@ -50,6 +50,7 @@ namespace TestForm
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.moveBar = new System.Windows.Forms.TrackBar();
             this.moveTip = new System.Windows.Forms.Label();
+            this.autoStepBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.scaleBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xOffsetBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yOffsetBar)).BeginInit();
@@ -243,13 +244,14 @@ namespace TestForm
             // 
             this.autoRefreshBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.autoRefreshBox.AutoSize = true;
-            this.autoRefreshBox.Location = new System.Drawing.Point(811, 419);
+            this.autoRefreshBox.Checked = true;
+            this.autoRefreshBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoRefreshBox.Location = new System.Drawing.Point(798, 419);
             this.autoRefreshBox.Name = "autoRefreshBox";
             this.autoRefreshBox.Size = new System.Drawing.Size(96, 16);
             this.autoRefreshBox.TabIndex = 17;
             this.autoRefreshBox.Text = "Auto Refresh";
             this.autoRefreshBox.UseVisualStyleBackColor = true;
-            this.autoRefreshBox.CheckedChanged += new System.EventHandler(this.autoRefreshBox_CheckedChanged);
             // 
             // comboBox1
             // 
@@ -298,11 +300,25 @@ namespace TestForm
             this.moveTip.TabIndex = 20;
             this.moveTip.Text = "0";
             // 
+            // autoStepBox
+            // 
+            this.autoStepBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.autoStepBox.AutoSize = true;
+            this.autoStepBox.Checked = true;
+            this.autoStepBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.autoStepBox.Location = new System.Drawing.Point(900, 419);
+            this.autoStepBox.Name = "autoStepBox";
+            this.autoStepBox.Size = new System.Drawing.Size(78, 16);
+            this.autoStepBox.TabIndex = 21;
+            this.autoStepBox.Text = "Auto Step";
+            this.autoStepBox.UseVisualStyleBackColor = true;
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(994, 450);
+            this.Controls.Add(this.autoStepBox);
             this.Controls.Add(this.moveTip);
             this.Controls.Add(this.moveBar);
             this.Controls.Add(this.comboBox1);
@@ -360,6 +376,7 @@ namespace TestForm
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label moveTip;
         private System.Windows.Forms.TrackBar moveBar;
+        private System.Windows.Forms.CheckBox autoStepBox;
     }
 }
 

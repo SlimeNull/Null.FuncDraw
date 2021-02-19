@@ -74,23 +74,72 @@ namespace Null.FuncDraw
         /// <param name="inputs">X的取值</param>
         /// <param name="graphics">绘图Graphics</param>
         /// <param name="pen">画线所用的Pen</param>
+        /// <param name="drawArea">画函数的区域</param>
         /// <param name="xOffset">原点的位置</param>
         /// <param name="yOffset">原点的位置</param>
         /// <param name="scale">缩放参数</param>
-        public static void DrawFunc(Func<double, double> func, IEnumerable<double> inputs, Graphics graphics, Pen pen, int xOffset, int yOffset, double scale)
+        public static void DrawFunc(Func<double, double> func, IEnumerable<double> inputs, Graphics graphics, Pen pen, Rectangle drawArea, int xOffset, int yOffset, double scale)
         {
             double[] nums = inputs.ToArray();
             Point[] coords = new Point[nums.Length];
 
+            int drawAreaLeft = drawArea.X,
+                drawAreaRight = drawAreaLeft + drawArea.Width,
+                drawAreaTop = drawArea.Y,
+                drawAreaBottom = drawAreaTop + drawArea.Height;
+
             double y;
-            for (int i = 0, len = nums.Length; i < len; i++)          // 最近刚知道要少用属性, 毕竟属性的实质是函数, 函数调用需要分配栈控件, 而且似乎还涉及到装箱拆箱, 所以这样效率高一些
+            for (int i = 0, len = nums.Length; i < len; i++)          // 最近刚知道要少用属性, 毕竟属性的实质是函数, 函数调用需要分配栈空间, 而且似乎还涉及到装箱拆箱, 所以这样效率高一些
             {
                 y = func.Invoke(nums[i]);
                 coords[i] = GetPointFromCoords(nums[i], y, xOffset, yOffset, scale);
             }
 
+            bool point1xIn1,
+                point1xIn2,
+                point1yIn1,
+                point1yIn2,
+                point2xIn1,
+                point2xIn2,
+                point2yIn1,
+                point2yIn2;
+
             for (int i = 1, len = nums.Length; i < len; i++)
-                graphics.DrawLine(pen, coords[i - 1], coords[i]);
+            {
+                Point point1 = coords[i - 1];
+                Point point2 = coords[i];
+
+                point1xIn1 = point1.X >= drawAreaLeft;
+                point1xIn2 = point1.X <= drawAreaRight;
+                point1yIn1 = point1.Y >= drawAreaTop;
+                point1yIn2 = point1.Y <= drawAreaBottom;
+                point2xIn1 = point2.X >= drawAreaLeft;
+                point2xIn2 = point2.X <= drawAreaRight;
+                point2yIn1 = point2.Y >= drawAreaTop;
+                point2yIn2 = point2.Y <= drawAreaBottom;
+
+                if ((!(point1xIn1 && point2xIn1)) || (!(point1xIn2 && point2xIn2)) || (!(point1yIn1 && point2yIn1)) || (!(point1yIn2 && point2yIn2)))
+                    continue;
+
+                if (!point1xIn1)
+                    point1 = new Point(drawAreaLeft, (int)(point1.Y + (point2.Y - point1.Y) * ((double)drawAreaLeft - point1.X) / (point2.X - point1.X)));
+                else if (!point2xIn1)
+                    point2 = new Point(drawAreaLeft, (int)(point2.Y + (point1.Y - point2.Y) * ((double)drawAreaLeft - point2.X) / (point1.X - point2.X)));
+                if (!point1xIn2)
+                    point1 = new Point(drawAreaRight, (int)(point2.Y + (point1.Y - point2.Y) * ((double)drawAreaRight - point2.X) / (point1.X - point2.X)));
+                else if (!point2xIn2)
+                    point2 = new Point(drawAreaRight, (int)(point1.Y + (point2.Y - point1.Y) * ((double)drawAreaRight - point1.X) / (point2.X - point1.X)));
+                if (!point1yIn1) 
+                    point1 = new Point((int)(point1.X + (point2.X - point1.X) * ((double)drawAreaTop - point1.Y) / (point2.Y - point1.Y)), drawAreaTop);
+                else if (!point2yIn1)
+                    point2 = new Point((int)(point2.X + (point1.X - point2.X) * ((double)drawAreaTop - point2.Y) / (point1.Y - point2.Y)), drawAreaTop);
+                if (!point1yIn2)
+                    point1 = new Point((int)(point2.X + (point1.X - point2.X) * ((double)drawAreaBottom - point2.Y) / (point1.Y - point2.Y)), drawAreaBottom);
+                else if (!point2yIn2)
+                    point2 = new Point((int)(point1.X + (point2.X - point1.X) * ((double)drawAreaBottom - point1.Y) / (point2.Y - point1.Y)), drawAreaBottom);
+
+                graphics.DrawLine(pen, point1, point2);
+            }
         }
         /// <summary>
         /// 画一个坐标轴
@@ -116,7 +165,7 @@ namespace Null.FuncDraw
             else
                 drawText = (point, num) => { };
 
-            Point 
+            Point
                 yTop = new Point(xOffset, drawArea.Y),
                 yBottom = new Point(xOffset, drawArea.Y + drawArea.Height),       // 确认轴的位置
                 xLeft = new Point(drawArea.X, yOffset),

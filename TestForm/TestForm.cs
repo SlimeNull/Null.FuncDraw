@@ -49,15 +49,22 @@ namespace TestForm
             pen = new Pen(paintColor);
             font = new Font(FontFamily.GenericSansSerif, 8);
 
-            autoRefreshTimer = new Timer() { Interval = 100 };
-            autoRefreshTimer.Tick += (sender, e) =>
+            golobalTimer = new Timer() { Interval = 100 };
+            golobalTimer.Tick += (sender, e) =>
             {
-                DrawAllForce();
-                double number = FuncDraw.GetNumberFromPixel(5, ViewModel.Scale);
-                int param = (int)Clamp(1d / number, stepBar.Minimum, stepBar.Maximum);
-                this.Invoke((Action)(()=> stepBar.Value = param));
-                
+                if (autoRefreshBox.Checked)
+                {
+                    DrawAllForce();
+                }
+
+                if (autoStepBox.Checked)
+                {
+                    double number = FuncDraw.GetNumberFromPixel(5, ViewModel.Scale);
+                    int param = (int)Clamp(1d / number, stepBar.Minimum, stepBar.Maximum);
+                    this.Invoke((Action)(() => stepBar.Value = param));
+                }
             };
+            golobalTimer.Start();
 
             paintPanel.MouseWheel += PaintPanel_MouseWheel;
 
@@ -69,12 +76,11 @@ namespace TestForm
 
             comboBox1.SelectedIndex = 0;
             funcToCalc = funcs[0];
-
-            autoRefreshBox.Checked = true;
         }
 
         Func<double, double> funcToCalc = (x) => Math.Tan(x);
 
+        Timer golobalTimer;
         Graphics g;
         Brush brush;
         Pen pen;
@@ -90,7 +96,12 @@ namespace TestForm
             var reverse = range1.Reverse();
             var concat = Lib.ConcatEnumerable(reverse, range2);
 
-            FuncDraw.DrawFunc(funcToCalc, concat, g, pen, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale);
+            FuncDraw.DrawFunc(
+                funcToCalc,
+                concat,
+                g, pen,
+                new Rectangle(Point.Empty, paintPanel.Size),
+                ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale);
 
             reverse.GetEnumerator().Dispose();
             concat.GetEnumerator().Dispose();
@@ -107,8 +118,8 @@ namespace TestForm
             FuncDraw.DrawShaft(
                 xRange, 
                 yRange, 
-                g, brush, pen, font, 
-                new Rectangle(0, 0, paintPanel.Width, paintPanel.Height), 
+                g, brush, pen, font,
+                new Rectangle(Point.Empty, paintPanel.Size),
                 ViewModel.XOffset, ViewModel.YOffset, 5, ViewModel.Scale, true);
         }
         void Clear()
@@ -132,7 +143,8 @@ namespace TestForm
             }
             catch
             {
-                MessageBox.Show("啊↓哈↑没画呢~", "出错啦", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (this.Focused)
+                    MessageBox.Show("啊↓哈↑没画呢~", "出错啦", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -151,11 +163,6 @@ namespace TestForm
             DrawShaft(g);
         }
 
-        Timer autoRefreshTimer;
-        private void autoRefreshBox_CheckedChanged(object sender, EventArgs e)
-        {
-            autoRefreshTimer.Enabled = autoRefreshBox.Checked;
-        }
 
         bool offsetMoving = false; Point lastPoint;
         private void paintPanel_MouseDown(object sender, MouseEventArgs e)
