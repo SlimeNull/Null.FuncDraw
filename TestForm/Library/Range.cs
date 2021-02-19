@@ -1,153 +1,113 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace TestForm.Library
+namespace Null.Library
 {
-    public static class Lib
+    public static partial class Lib
     {
-        //public static IEnumerator Range(double stop)
-        //{
-        //    return new RangeEnumerator(0, stop, 1);
-        //}
-        //public static IEnumerator Range(double start, double stop)
-        //{
-        //    return new RangeEnumerator(start, stop, 1);
-        //}
-        //public static IEnumerator Range(double start, double stop, double step)
-        //{
-        //    return new RangeEnumerator(start, stop, step);
-        //}
-
         public static IEnumerable<int> Range(int stop)
         {
-            return new RangeInteger(new RangeEnumerator(stop));
+            return new RangeIterator(stop);
         }
         public static IEnumerable<int> Range(int start, int stop)
         {
-            return new RangeInteger(new RangeEnumerator(start, stop));
+            return new RangeIterator(start, stop);
         }
         public static IEnumerable<int> Range(int start, int stop, int step)
         {
-            return new RangeInteger(new RangeEnumerator(start, stop, step));
+            return new RangeIterator(start, stop, step);
         }
         public static IEnumerable<float> Range(float stop)
         {
-            return new RangeFloat(new RangeEnumerator(stop));
+            return new RangeIterator(stop);
         }
         public static IEnumerable<float> Range(float start, double stop)
         {
-            return new RangeFloat(new RangeEnumerator(start, stop));
+            return new RangeIterator(start, stop);
         }
         public static IEnumerable<float> Range(float start, float stop, float step)
         {
-            return new RangeFloat(new RangeEnumerator(start, stop, step));
+            return new RangeIterator(start, stop, step);
         }
         public static IEnumerable<double> Range(double stop)
         {
-            return new RangeDouble(new RangeEnumerator(stop));
+            return new RangeIterator(stop);
         }
         public static IEnumerable<double> Range(double start, double stop)
         {
-            return new RangeDouble(new RangeEnumerator(start, stop));
+            return new RangeIterator(start, stop);
         }
         public static IEnumerable<double> Range(double start, double stop, double step)
         {
-            return new RangeDouble(new RangeEnumerator(start, stop, step));
+            return new RangeIterator(start, stop, step);
         }
     }
-    public class RangeInteger : IEnumerable<int>
+    public class RangeIterator : IEnumerable, IEnumerable<int>, IEnumerable<float>, IEnumerable<double>
     {
-        RangeEnumerator enumerator;
-        public RangeInteger(RangeEnumerator enumerator)
+        double start, stop, step;
+        public RangeIterator(double stop)
         {
-            this.enumerator = enumerator;
+            double start = 0;
+            double step = stop > 0 ? 1 : -1;
+
+            this.start = start;
+            this.stop = stop;
+            this.step = step;
+        }
+        public RangeIterator(double start, double stop)
+        {
+            double step = stop > start ? 1 : -1;
+
+            this.start = start;
+            this.stop = stop;
+            this.step = step;
+        }
+        public RangeIterator(double start, double stop, double step)
+        {
+            this.start = start;
+            this.stop = stop;
+            this.step = step;
         }
 
         public IEnumerator GetEnumerator()
         {
-            return enumerator;
+            return new RangeEnumerator(start, stop, step);
         }
 
         IEnumerator<int> IEnumerable<int>.GetEnumerator()
         {
-            return enumerator;
-        }
-    }
-    public class RangeFloat : IEnumerable<float>
-    {
-        RangeEnumerator enumerator;
-        public RangeFloat(RangeEnumerator enumerator)
-        {
-            this.enumerator = enumerator;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return enumerator;
+            return new RangeEnumerator(start, stop, step);
         }
 
         IEnumerator<float> IEnumerable<float>.GetEnumerator()
         {
-            return enumerator;
-        }
-    }
-    public class RangeDouble : IEnumerable<double>, IEnumerable
-    {
-        RangeEnumerator enumerator;
-        public RangeDouble(RangeEnumerator enumerator)
-        {
-            this.enumerator = enumerator;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return enumerator;
+            return new RangeEnumerator(start, stop, step);
         }
 
         IEnumerator<double> IEnumerable<double>.GetEnumerator()
         {
-            return enumerator;
+            return new RangeEnumerator(start, stop, step);
         }
     }
     public class RangeEnumerator : IEnumerator, IEnumerator<int>, IEnumerator<float>, IEnumerator<double>
     {
         double start, stop, step, current;
         Func<bool> checkMoveFunc;
-        public RangeEnumerator(double stop)
-        {
-            double start = 0;
-            double step = start < stop ? 1 : -1;
-            Initialize(start, stop, step);
-        }
-        public RangeEnumerator(double start, double stop)
-        {
-            double step = start < stop ? 1 : -1;
-            Initialize(start, stop, step);
-        }
         public RangeEnumerator(double start, double stop, double step)
         {
-            Initialize(start, stop, step);
-        }
-        void Initialize(double start, double stop, double step)
-        {
-            if (step == 0)
-                throw new ArgumentOutOfRangeException();
-
             if (start < stop)
             {
                 if (step <= 0)
                     step *= -1;
-                checkMoveFunc = () => 
+                checkMoveFunc = () =>
                     current < this.stop;
             }
             else if (start > stop)
             {
                 if (step >= 0)
                     step *= -1;
-                checkMoveFunc = () => 
+                checkMoveFunc = () =>
                     current > this.stop;
             }
             else
@@ -172,13 +132,13 @@ namespace TestForm.Library
 
         public void Dispose()
         {
-            current = start;
+            GC.SuppressFinalize(this);
         }
 
         public bool MoveNext()
         {
             current += step;
-            return checkMoveFunc();
+            return checkMoveFunc.Invoke();
         }
 
         public void Reset()

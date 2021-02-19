@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using TestForm.Library;
 using TestForm.ViewModel;
+using Null.FuncDraw;
+using Null.Library;
 
 namespace TestForm
 {
@@ -36,19 +38,21 @@ namespace TestForm
             scaleTip.DataBindings.Add(new Binding("Text", scaleBar, "Value"));
             xOffsetTip.DataBindings.Add(new Binding("Text", xOffsetBar, "Value"));
             yOffsetTip.DataBindings.Add(new Binding("Text", yOffsetBar, "Value"));
+            moveTip.DataBindings.Add(new Binding("Text", moveBar, "Value"));
 
             //var typeTransBinding1 = new Binding("Text", ViewModel, "Step");
             //stepTip.DataBindings.Add(typeTransBinding1);
 
+            Color paintColor = Color.FromArgb(0, 120, 215);
             g = Graphics.FromHwnd(paintPanel.Handle);
-            brush = new SolidBrush(Color.LightPink);
-            pen = new Pen(Color.LightPink);
-            font = new Font(FontFamily.GenericSansSerif, 12);
+            brush = new SolidBrush(paintColor);
+            pen = new Pen(paintColor);
+            font = new Font(FontFamily.GenericSansSerif, 8);
 
-            autoRefreshTimer = new Timer() { Interval = 1000 };
+            autoRefreshTimer = new Timer() { Interval = 100 };
             autoRefreshTimer.Tick += (sender, e) =>
             {
-                DrawAll();
+                DrawAllForce();
             };
 
             paintPanel.MouseWheel += PaintPanel_MouseWheel;
@@ -65,15 +69,6 @@ namespace TestForm
             autoRefreshBox.Checked = true;
         }
 
-        double MyFunc1(double num)
-        {
-            return Math.Sin(num);
-        }
-        double MyFunc2(double num)
-        {
-            return 1 / (1 + Math.Pow(2, num));
-        }
-
         Func<double, double> funcToCalc = (x) => Math.Tan(x);
 
         Graphics g;
@@ -83,20 +78,31 @@ namespace TestForm
         GraphicsBuffer buffer;
         void DrawFunc(Graphics g)
         {
-            Core.FuncDraw.GetCoordinatesFromPoint((int)(-0.5 * paintPanel.Width), 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xStart, out _);
-            Core.FuncDraw.GetCoordinatesFromPoint((int)(paintPanel.Width * 1.5), 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xEnd, out _);
+            FuncDraw.GetCoordsFromPoint((int)(-0.25 * paintPanel.Width), 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xStart, out _);
+            FuncDraw.GetCoordsFromPoint((int)(paintPanel.Width * 1.25), 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xEnd, out _);
 
-            Core.FuncDraw.DrawFunc(funcToCalc, Lib.Range(xStart, xEnd, ViewModel.Step), g, pen, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale);
+            var range1 = Lib.Range(0, xStart, ViewModel.Step);
+            var range2 = Lib.Range(0, xEnd, ViewModel.Step);
+            var reverse = range1.Reverse();
+            var concat = Lib.ConcatEnumerable(reverse, range2);
+
+            FuncDraw.DrawFunc(funcToCalc, concat, g, pen, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale);
+
+            reverse.GetEnumerator().Dispose();
+            concat.GetEnumerator().Dispose();
         }
         void DrawShaft(Graphics g)
         {
-            Core.FuncDraw.GetCoordinatesFromPoint(0, 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xLeft, out double yTop);
-            Core.FuncDraw.GetCoordinatesFromPoint(paintPanel.Width, paintPanel.Height, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xRight, out double yBottom);
-            double step = Core.FuncDraw.GetNumberFromPixelLength(50, ViewModel.Scale);
+            FuncDraw.GetCoordsFromPoint(0, 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xLeft, out double yTop);
+            FuncDraw.GetCoordsFromPoint(paintPanel.Width, paintPanel.Height, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xRight, out double yBottom);
+            double step = FuncDraw.GetNumberFromPixel(50, ViewModel.Scale);
 
-            Core.FuncDraw.DrawShaft(
-                Lib.Range(Math.Round(xLeft), xRight, Math.Round(step, 2)), 
-                Lib.Range(Math.Round(yTop), yBottom, Math.Round(step, 2)), 
+            var xRange = Lib.ConcatEnumerable(Lib.Range(0, xLeft, step), Lib.Range(step, xRight, step));
+            var yRange = Lib.ConcatEnumerable(Lib.Range(-step, yBottom, step), Lib.Range(step, yTop, step));
+
+            FuncDraw.DrawShaft(
+                xRange, 
+                yRange, 
                 g, brush, pen, font, 
                 new Rectangle(0, 0, paintPanel.Width, paintPanel.Height), 
                 ViewModel.XOffset, ViewModel.YOffset, 5, ViewModel.Scale, true);
@@ -107,12 +113,18 @@ namespace TestForm
         }
         void DrawAll()
         {
+            DrawAllForce();
+        }
+        void DrawAllForce()
+        {
             try
             {
-                buffer.Clear(paintPanel.BackColor);
-                DrawFunc(buffer.BufferGraphics);
-                DrawShaft(buffer.BufferGraphics);
-                buffer.DrawBuffer();
+                buffer.BufferGraphics.Graphics.Clear(paintPanel.BackColor);
+                //buffer.Clear(paintPanel.BackColor);
+                DrawFunc(buffer.BufferGraphics.Graphics);
+                DrawShaft(buffer.BufferGraphics.Graphics);
+                //buffer.DrawBuffer();
+                buffer.BufferGraphics.Render();
             }
             catch
             {
@@ -128,11 +140,6 @@ namespace TestForm
         private void drawButton_MouseDown(object sender, MouseEventArgs e)
         {
             DrawFunc(g);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show($"[{String.Join(", ", Lib.Range(-10).ToList())}]");
         }
 
         private void shaftButton_MouseDown(object sender, MouseEventArgs e)
@@ -153,19 +160,24 @@ namespace TestForm
             lastPoint = e.Location;
         }
 
+        bool moveBarIncrease = true;
         private void paintPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if (offsetMoving)
             {
-                Point offset = new Point(e.Location.X - lastPoint.X, e.Location.Y - lastPoint.Y);
-                if (offset.X != 0 && offset.Y != 0)
-                {
-                    lastPoint = e.Location;
-                    xOffsetBar.Value = (int)Scope(xOffsetBar.Value + offset.X, xOffsetBar.Minimum, xOffsetBar.Maximum);
-                    yOffsetBar.Value = (int)Scope(yOffsetBar.Value + offset.Y, yOffsetBar.Minimum, yOffsetBar.Maximum);
-                }
+                Point movePos = paintPanel.PointToClient(MousePosition);
+                Point offset = new Point(movePos.X - lastPoint.X, movePos.Y - lastPoint.Y);
+                lastPoint = movePos;
+                xOffsetBar.Value = (int)Clamp(xOffsetBar.Value + offset.X, xOffsetBar.Minimum, xOffsetBar.Maximum);
+                yOffsetBar.Value = (int)Clamp(yOffsetBar.Value + offset.Y, yOffsetBar.Minimum, yOffsetBar.Maximum);
 
                 DrawAll();
+                moveBar.Value = (int)Clamp(moveBar.Value + (moveBarIncrease ? 1 : -1), moveBar.Minimum, moveBar.Maximum);
+
+                if (moveBar.Value == moveBar.Maximum)
+                    moveBarIncrease = false;
+                else if (moveBar.Value == moveBar.Minimum)
+                    moveBarIncrease = true;
             }
         }
 
@@ -178,7 +190,7 @@ namespace TestForm
         {
             offsetMoving = false;
         }
-        double Scope(double src, double min, double max)
+        double Clamp(double src, double min, double max)    // Math.Clamp在WinForm中似乎没有?
         {
             if (src < min)
                 return min;
@@ -188,9 +200,9 @@ namespace TestForm
             return src;
         }
 
-        private void PaintPanel_MouseWheel(object sender, MouseEventArgs e)
+        private void PaintPanel_MouseWheel(object sender, MouseEventArgs e)        // 当鼠标在面板内滚动时, 调整缩放
         {
-            scaleBar.Value = (int)Scope(scaleBar.Value + e.Delta, scaleBar.Minimum, scaleBar.Maximum);
+            scaleBar.Value = (int)Clamp(scaleBar.Value + e.Delta, scaleBar.Minimum, scaleBar.Maximum);
 
             if (e.Delta != 0)
                 DrawAll();
@@ -198,20 +210,21 @@ namespace TestForm
 
         private void paintPanel_Paint(object sender, PaintEventArgs e)
         {
-
+            DrawAll();        // 当控件重绘时, 也重绘图像
         }
 
         private void paintPanel_Click(object sender, EventArgs e)
         {
-            DrawAll();
+            DrawAll();        // 当点击面板时, 重绘图像
         }
 
         private void paintPanel_Resize(object sender, EventArgs e)
         {
             buffer.BufferArea = new Rectangle(0, 0, paintPanel.Width, paintPanel.Height);
-            buffer.DestGraphics = paintPanel.CreateGraphics();
+            buffer.TargetGraphics.Dispose();
+            buffer.TargetGraphics = paintPanel.CreateGraphics();
 
-            DrawAll();
+            DrawAll();        // 当面板尺寸变化时, 重新设置缓冲区的尺寸以及缓冲区的绘图Graphics
         }
         Func<double, double>[] funcs = new Func<double, double>[]
         {
@@ -233,12 +246,20 @@ namespace TestForm
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex > 0)
-                funcToCalc = funcs[comboBox1.SelectedIndex];
+                funcToCalc = funcs[comboBox1.SelectedIndex];        // 当选择框变化时, 更新需要绘制的函数
         }
 
-        private void TestForm_Load(object sender, EventArgs e)
+        private void paintPanel_MouseDoubleClick(object sender, MouseEventArgs e)    // 当双击时, 自动调整精度
         {
+            double number = FuncDraw.GetNumberFromPixel(5, ViewModel.Scale);
+            int param = (int)Clamp(1d / number, stepBar.Minimum, stepBar.Maximum);
+            stepBar.Value = param;
+        }
 
+        private void button1_Click(object sender, EventArgs e)      // 当测试按钮按下时, 执行临时要执行的测试代码
+        {
+            IEnumerable<int> enumerable = Lib.ConcatEnumerable(Lib.Range(10), Lib.Range(-10), Lib.Range(-10, 0));
+            MessageBox.Show($"[{String.Join(", ", enumerable.ToList())}]");
         }
     }
 }

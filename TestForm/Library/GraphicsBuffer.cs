@@ -1,57 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TestForm.Library
 {
-    class GraphicsBuffer
+    public class GraphicsBuffer
     {
-        Bitmap buffer;
-        Graphics bufferGraphics;
+        BufferedGraphics buffer;
         Rectangle bufferArea;
+        BufferedGraphicsContext context;
 
-        Graphics destGraphics;
+        Graphics targetGraphics;
 
-        public GraphicsBuffer(Graphics destGraphics, Rectangle rect)
+        public GraphicsBuffer(Graphics targetGraphics, Rectangle bufferArea)
         {
-            bufferArea = rect;
-            buffer = new Bitmap(rect.Width, rect.Height, PixelFormat.Format24bppRgb);
-            bufferGraphics = Graphics.FromImage(buffer);
+            context = BufferedGraphicsManager.Current;
+            buffer = context.Allocate(targetGraphics, bufferArea);
 
-            this.destGraphics = destGraphics;
+            this.targetGraphics = targetGraphics;
+            this.bufferArea = bufferArea;
         }
+
+        public BufferedGraphics BufferGraphics { get => buffer; }
         public Rectangle BufferArea
-        {
+        { 
             get => bufferArea;
             set
             {
-                bufferGraphics.Dispose();
-                buffer.Dispose();
                 bufferArea = value;
-                buffer = new Bitmap(value.Width, value.Height, PixelFormat.Format24bppRgb);
-                bufferGraphics = Graphics.FromImage(buffer);
+
+                buffer.Dispose();
+                buffer = context.Allocate(targetGraphics, BufferArea);
             }
         }
-        public Graphics DestGraphics
+        public Graphics TargetGraphics
         {
-            get => destGraphics;
+            get => targetGraphics;
             set
             {
-                destGraphics = value;
+                targetGraphics = value;
+
+                buffer = context.Allocate(targetGraphics, BufferArea);
             }
-        }
-        public Graphics BufferGraphics { get => bufferGraphics; }
-        public void DrawBuffer()
-        {
-            destGraphics.DrawImage(buffer, bufferArea.Location);
-        }
-        public void Clear(Color color)
-        {
-            bufferGraphics.Clear(color);
         }
     }
 }

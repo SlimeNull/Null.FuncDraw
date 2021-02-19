@@ -48,10 +48,13 @@ namespace TestForm
             this.stepTip = new System.Windows.Forms.Label();
             this.autoRefreshBox = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.moveBar = new System.Windows.Forms.TrackBar();
+            this.moveTip = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.scaleBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xOffsetBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yOffsetBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stepBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveBar)).BeginInit();
             this.SuspendLayout();
             // 
             // drawButton
@@ -78,6 +81,7 @@ namespace TestForm
             this.paintPanel.TabIndex = 1;
             this.paintPanel.Click += new System.EventHandler(this.paintPanel_Click);
             this.paintPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.paintPanel_Paint);
+            this.paintPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.paintPanel_MouseDoubleClick);
             this.paintPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.paintPanel_MouseDown);
             this.paintPanel.MouseLeave += new System.EventHandler(this.paintPanel_MouseLeave);
             this.paintPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.paintPanel_MouseMove);
@@ -273,11 +277,34 @@ namespace TestForm
             this.comboBox1.TabIndex = 18;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // moveBar
+            // 
+            this.moveBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.moveBar.Location = new System.Drawing.Point(713, 353);
+            this.moveBar.Maximum = 1000;
+            this.moveBar.Minimum = 1;
+            this.moveBar.Name = "moveBar";
+            this.moveBar.Size = new System.Drawing.Size(269, 45);
+            this.moveBar.TabIndex = 19;
+            this.moveBar.Value = 1;
+            // 
+            // moveTip
+            // 
+            this.moveTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.moveTip.AutoSize = true;
+            this.moveTip.Location = new System.Drawing.Point(947, 338);
+            this.moveTip.Name = "moveTip";
+            this.moveTip.Size = new System.Drawing.Size(11, 12);
+            this.moveTip.TabIndex = 20;
+            this.moveTip.Text = "0";
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(994, 450);
+            this.Controls.Add(this.moveTip);
+            this.Controls.Add(this.moveBar);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.autoRefreshBox);
             this.Controls.Add(this.stepTip);
@@ -299,12 +326,12 @@ namespace TestForm
             this.Controls.Add(this.drawButton);
             this.DoubleBuffered = true;
             this.Name = "TestForm";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.TestForm_Load);
+            this.Text = "DrawFuncTest";
             ((System.ComponentModel.ISupportInitialize)(this.scaleBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xOffsetBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yOffsetBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stepBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,6 +358,8 @@ namespace TestForm
         public System.Windows.Forms.TrackBar stepBar;
         private System.Windows.Forms.CheckBox autoRefreshBox;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label moveTip;
+        private System.Windows.Forms.TrackBar moveBar;
     }
 }
 

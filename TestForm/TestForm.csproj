@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Library\BitmapDrawBuffer.cs" />
+    <Compile Include="Library\Collections.cs" />
     <Compile Include="Library\GraphicsBuffer.cs" />
     <Compile Include="Library\Range.cs" />
     <Compile Include="TestForm.cs">
