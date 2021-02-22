@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace Null.FuncDraw
+namespace Null.FuncDraw.Core
 {
-    public static class FuncDraw
+    public static class FuncDrawCore
     {
         /// <summary>
         /// 根据数字坐标获取像素位置
@@ -91,52 +91,93 @@ namespace Null.FuncDraw
             double y;
             for (int i = 0, len = nums.Length; i < len; i++)          // 最近刚知道要少用属性, 毕竟属性的实质是函数, 函数调用需要分配栈空间, 而且似乎还涉及到装箱拆箱, 所以这样效率高一些
             {
-                y = func.Invoke(nums[i]);
+                y = 0;
+                try
+                {
+                    y = func.Invoke(nums[i]);
+                }
+                catch { }
                 coords[i] = GetPointFromCoords(nums[i], y, xOffset, yOffset, scale);
             }
 
-            bool point1xIn1,
-                point1xIn2,
-                point1yIn1,
-                point1yIn2,
-                point2xIn1,
-                point2xIn2,
-                point2yIn1,
-                point2yIn2;
+            bool point1xIn1 = false,
+                point1xIn2 = false,
+                point1yIn1 = false,
+                point1yIn2 = false,
+                point2xIn1 = false,
+                point2xIn2 = false,
+                point2yIn1 = false,
+                point2yIn2 = false;
+
+            Action<Point> point1Check = (point1) =>
+            {
+                point1xIn1 = point1.X >= drawAreaLeft;
+                point1xIn2 = point1.X <= drawAreaRight;
+                point1yIn1 = point1.Y >= drawAreaTop;
+                point1yIn2 = point1.Y <= drawAreaBottom;
+            };
+            Action<Point> point2Check = (point2) =>
+            {
+                point2xIn1 = point2.X >= drawAreaLeft;
+                point2xIn2 = point2.X <= drawAreaRight;
+                point2yIn1 = point2.Y >= drawAreaTop;
+                point2yIn2 = point2.Y <= drawAreaBottom;
+            };
 
             for (int i = 1, len = nums.Length; i < len; i++)
             {
                 Point point1 = coords[i - 1];
                 Point point2 = coords[i];
 
-                point1xIn1 = point1.X >= drawAreaLeft;
-                point1xIn2 = point1.X <= drawAreaRight;
-                point1yIn1 = point1.Y >= drawAreaTop;
-                point1yIn2 = point1.Y <= drawAreaBottom;
-                point2xIn1 = point2.X >= drawAreaLeft;
-                point2xIn2 = point2.X <= drawAreaRight;
-                point2yIn1 = point2.Y >= drawAreaTop;
-                point2yIn2 = point2.Y <= drawAreaBottom;
+                point1Check.Invoke(point1);
+                point2Check.Invoke(point2);
 
-                if ((!(point1xIn1 && point2xIn1)) || (!(point1xIn2 && point2xIn2)) || (!(point1yIn1 && point2yIn1)) || (!(point1yIn2 && point2yIn2)))
+                if (((!point1xIn1) && (!point2xIn1)) ||
+                    ((!point1xIn2) && (!point2xIn2)) ||
+                    ((!point1yIn1) && (!point2yIn1)) ||
+                    ((!point1yIn2) && (!point2yIn2)))
                     continue;
 
                 if (!point1xIn1)
+                {
                     point1 = new Point(drawAreaLeft, (int)(point1.Y + (point2.Y - point1.Y) * ((double)drawAreaLeft - point1.X) / (point2.X - point1.X)));
+                    point1Check.Invoke(point1);
+                }
                 else if (!point2xIn1)
+                {
                     point2 = new Point(drawAreaLeft, (int)(point2.Y + (point1.Y - point2.Y) * ((double)drawAreaLeft - point2.X) / (point1.X - point2.X)));
+                    point2Check.Invoke(point2);
+                }
                 if (!point1xIn2)
+                {
                     point1 = new Point(drawAreaRight, (int)(point2.Y + (point1.Y - point2.Y) * ((double)drawAreaRight - point2.X) / (point1.X - point2.X)));
+                    point1Check.Invoke(point1);
+                }
                 else if (!point2xIn2)
+                {
                     point2 = new Point(drawAreaRight, (int)(point1.Y + (point2.Y - point1.Y) * ((double)drawAreaRight - point1.X) / (point2.X - point1.X)));
-                if (!point1yIn1) 
+                    point2Check.Invoke(point2);
+                }
+                if (!point1yIn1)
+                {
                     point1 = new Point((int)(point1.X + (point2.X - point1.X) * ((double)drawAreaTop - point1.Y) / (point2.Y - point1.Y)), drawAreaTop);
+                    point1Check.Invoke(point1);
+                }
                 else if (!point2yIn1)
+                {
                     point2 = new Point((int)(point2.X + (point1.X - point2.X) * ((double)drawAreaTop - point2.Y) / (point1.Y - point2.Y)), drawAreaTop);
+                    point2Check.Invoke(point2);
+                }
                 if (!point1yIn2)
+                {
                     point1 = new Point((int)(point2.X + (point1.X - point2.X) * ((double)drawAreaBottom - point2.Y) / (point1.Y - point2.Y)), drawAreaBottom);
+                    point1Check.Invoke(point1);
+                }
                 else if (!point2yIn2)
+                {
                     point2 = new Point((int)(point1.X + (point2.X - point1.X) * ((double)drawAreaBottom - point1.Y) / (point2.Y - point1.Y)), drawAreaBottom);
+                    point2Check.Invoke(point2);
+                }
 
                 graphics.DrawLine(pen, point1, point2);
             }

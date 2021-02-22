@@ -61,7 +61,7 @@ namespace TestForm
             // drawButton
             // 
             this.drawButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.drawButton.Location = new System.Drawing.Point(713, 12);
+            this.drawButton.Location = new System.Drawing.Point(727, 12);
             this.drawButton.Name = "drawButton";
             this.drawButton.Size = new System.Drawing.Size(75, 23);
             this.drawButton.TabIndex = 0;
@@ -78,7 +78,7 @@ namespace TestForm
             this.paintPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.paintPanel.Location = new System.Drawing.Point(12, 12);
             this.paintPanel.Name = "paintPanel";
-            this.paintPanel.Size = new System.Drawing.Size(695, 426);
+            this.paintPanel.Size = new System.Drawing.Size(709, 449);
             this.paintPanel.TabIndex = 1;
             this.paintPanel.Click += new System.EventHandler(this.paintPanel_Click);
             this.paintPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.paintPanel_Paint);
@@ -92,7 +92,7 @@ namespace TestForm
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(875, 12);
+            this.clearButton.Location = new System.Drawing.Point(889, 12);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 2;
@@ -103,35 +103,38 @@ namespace TestForm
             // scaleBar
             // 
             this.scaleBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.scaleBar.Location = new System.Drawing.Point(713, 67);
+            this.scaleBar.Location = new System.Drawing.Point(727, 67);
             this.scaleBar.Maximum = 5000;
             this.scaleBar.Minimum = 1;
             this.scaleBar.Name = "scaleBar";
             this.scaleBar.Size = new System.Drawing.Size(269, 45);
             this.scaleBar.TabIndex = 3;
+            this.scaleBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.scaleBar.Value = 1;
             // 
             // xOffsetBar
             // 
             this.xOffsetBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xOffsetBar.Location = new System.Drawing.Point(713, 130);
+            this.xOffsetBar.Location = new System.Drawing.Point(727, 130);
             this.xOffsetBar.Name = "xOffsetBar";
             this.xOffsetBar.Size = new System.Drawing.Size(269, 45);
             this.xOffsetBar.TabIndex = 4;
+            this.xOffsetBar.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // yOffsetBar
             // 
             this.yOffsetBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.yOffsetBar.Location = new System.Drawing.Point(713, 193);
+            this.yOffsetBar.Location = new System.Drawing.Point(727, 193);
             this.yOffsetBar.Name = "yOffsetBar";
             this.yOffsetBar.Size = new System.Drawing.Size(269, 45);
             this.yOffsetBar.TabIndex = 5;
+            this.yOffsetBar.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(711, 52);
+            this.label1.Location = new System.Drawing.Point(725, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 6;
@@ -141,7 +144,7 @@ namespace TestForm
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(711, 115);
+            this.label2.Location = new System.Drawing.Point(725, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 7;
@@ -151,7 +154,7 @@ namespace TestForm
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(713, 178);
+            this.label3.Location = new System.Drawing.Point(727, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 8;
@@ -161,7 +164,7 @@ namespace TestForm
             // 
             this.scaleTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.scaleTip.AutoSize = true;
-            this.scaleTip.Location = new System.Drawing.Point(947, 52);
+            this.scaleTip.Location = new System.Drawing.Point(961, 52);
             this.scaleTip.Name = "scaleTip";
             this.scaleTip.Size = new System.Drawing.Size(11, 12);
             this.scaleTip.TabIndex = 9;
@@ -171,7 +174,7 @@ namespace TestForm
             // 
             this.xOffsetTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.xOffsetTip.AutoSize = true;
-            this.xOffsetTip.Location = new System.Drawing.Point(947, 115);
+            this.xOffsetTip.Location = new System.Drawing.Point(961, 115);
             this.xOffsetTip.Name = "xOffsetTip";
             this.xOffsetTip.Size = new System.Drawing.Size(11, 12);
             this.xOffsetTip.TabIndex = 10;
@@ -181,7 +184,7 @@ namespace TestForm
             // 
             this.yOffsetTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.yOffsetTip.AutoSize = true;
-            this.yOffsetTip.Location = new System.Drawing.Point(947, 178);
+            this.yOffsetTip.Location = new System.Drawing.Point(961, 178);
             this.yOffsetTip.Name = "yOffsetTip";
             this.yOffsetTip.Size = new System.Drawing.Size(11, 12);
             this.yOffsetTip.TabIndex = 11;
@@ -190,7 +193,7 @@ namespace TestForm
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(715, 415);
+            this.button1.Location = new System.Drawing.Point(729, 438);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 12;
@@ -201,7 +204,7 @@ namespace TestForm
             // shaftButton
             // 
             this.shaftButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.shaftButton.Location = new System.Drawing.Point(794, 12);
+            this.shaftButton.Location = new System.Drawing.Point(808, 12);
             this.shaftButton.Name = "shaftButton";
             this.shaftButton.Size = new System.Drawing.Size(75, 23);
             this.shaftButton.TabIndex = 13;
@@ -213,7 +216,7 @@ namespace TestForm
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(713, 241);
+            this.label4.Location = new System.Drawing.Point(727, 241);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 14;
@@ -222,19 +225,20 @@ namespace TestForm
             // stepBar
             // 
             this.stepBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.stepBar.Location = new System.Drawing.Point(713, 256);
+            this.stepBar.Location = new System.Drawing.Point(727, 256);
             this.stepBar.Maximum = 1000;
             this.stepBar.Minimum = 1;
             this.stepBar.Name = "stepBar";
             this.stepBar.Size = new System.Drawing.Size(269, 45);
             this.stepBar.TabIndex = 15;
+            this.stepBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.stepBar.Value = 1;
             // 
             // stepTip
             // 
             this.stepTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.stepTip.AutoSize = true;
-            this.stepTip.Location = new System.Drawing.Point(947, 241);
+            this.stepTip.Location = new System.Drawing.Point(961, 241);
             this.stepTip.Name = "stepTip";
             this.stepTip.Size = new System.Drawing.Size(11, 12);
             this.stepTip.TabIndex = 16;
@@ -246,7 +250,7 @@ namespace TestForm
             this.autoRefreshBox.AutoSize = true;
             this.autoRefreshBox.Checked = true;
             this.autoRefreshBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoRefreshBox.Location = new System.Drawing.Point(798, 419);
+            this.autoRefreshBox.Location = new System.Drawing.Point(812, 442);
             this.autoRefreshBox.Name = "autoRefreshBox";
             this.autoRefreshBox.Size = new System.Drawing.Size(96, 16);
             this.autoRefreshBox.TabIndex = 17;
@@ -272,7 +276,7 @@ namespace TestForm
             "Math.Log10",
             "Math.Abs",
             "Math.Exp"});
-            this.comboBox1.Location = new System.Drawing.Point(726, 307);
+            this.comboBox1.Location = new System.Drawing.Point(740, 330);
             this.comboBox1.MaxDropDownItems = 100;
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(245, 20);
@@ -282,19 +286,20 @@ namespace TestForm
             // moveBar
             // 
             this.moveBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.moveBar.Location = new System.Drawing.Point(713, 353);
+            this.moveBar.Location = new System.Drawing.Point(727, 376);
             this.moveBar.Maximum = 1000;
             this.moveBar.Minimum = 1;
             this.moveBar.Name = "moveBar";
             this.moveBar.Size = new System.Drawing.Size(269, 45);
             this.moveBar.TabIndex = 19;
+            this.moveBar.TickStyle = System.Windows.Forms.TickStyle.None;
             this.moveBar.Value = 1;
             // 
             // moveTip
             // 
             this.moveTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.moveTip.AutoSize = true;
-            this.moveTip.Location = new System.Drawing.Point(947, 338);
+            this.moveTip.Location = new System.Drawing.Point(961, 338);
             this.moveTip.Name = "moveTip";
             this.moveTip.Size = new System.Drawing.Size(11, 12);
             this.moveTip.TabIndex = 20;
@@ -306,7 +311,7 @@ namespace TestForm
             this.autoStepBox.AutoSize = true;
             this.autoStepBox.Checked = true;
             this.autoStepBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoStepBox.Location = new System.Drawing.Point(900, 419);
+            this.autoStepBox.Location = new System.Drawing.Point(914, 442);
             this.autoStepBox.Name = "autoStepBox";
             this.autoStepBox.Size = new System.Drawing.Size(78, 16);
             this.autoStepBox.TabIndex = 21;
@@ -317,7 +322,7 @@ namespace TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 450);
+            this.ClientSize = new System.Drawing.Size(1008, 473);
             this.Controls.Add(this.autoStepBox);
             this.Controls.Add(this.moveTip);
             this.Controls.Add(this.moveBar);

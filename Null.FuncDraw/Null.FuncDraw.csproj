@@ -8,9 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Null.FuncDraw</RootNamespace>
     <AssemblyName>Null.FuncDraw</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -21,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -44,14 +48,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Library\Collections.cs" />
+    <Compile Include="Library\Range.cs" />
+    <Compile Include="Model\DrawSettings.cs" />
+    <Compile Include="Model\FuncDataContainer.cs" />
+    <Compile Include="Model\FuncDrawManager.cs" />
+    <Compile Include="Model\CalcFunction.cs" />
+    <Compile Include="Model\SubOperation.cs" />
+    <Compile Include="UserControls\NTrackBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NTrackBar.Designer.cs">
+      <DependentUpon>NTrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="View\FunctionManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\FunctionManager.Designer.cs">
+      <DependentUpon>FunctionManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SubOperationEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SubOperationEditor.Designer.cs">
+      <DependentUpon>SubOperationEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FunctionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FunctionEditor.Designer.cs">
+      <DependentUpon>FunctionEditor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -60,7 +102,24 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\NTrackBar.resx">
+      <DependentUpon>NTrackBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FunctionEditor.resx">
+      <DependentUpon>FunctionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FunctionManager.resx">
+      <DependentUpon>FunctionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SubOperationEditor.resx">
+      <DependentUpon>SubOperationEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -70,6 +129,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Null.FuncDraw.Core\Null.FuncDraw.Core.csproj">
+      <Project>{c79db772-fa37-4501-b7bd-df77f75fadab}</Project>
+      <Name>Null.FuncDraw.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

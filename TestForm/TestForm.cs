@@ -10,6 +10,7 @@ using TestForm.Library;
 using TestForm.ViewModel;
 using Null.FuncDraw;
 using Null.Library;
+using Null.FuncDraw.Core;
 
 namespace TestForm
 {
@@ -26,8 +27,10 @@ namespace TestForm
             yOffsetBar.DataBindings.Add(new Binding("Value", ViewModel, "YOffset"));
             stepBar.DataBindings.Add(new Binding("Value", ViewModel, "StepDiv"));
 
-            xOffsetBar.Minimum = -10000; xOffsetBar.Maximum = paintPanel.Width + 10000;
-            yOffsetBar.Maximum = -10000; yOffsetBar.Maximum = paintPanel.Height + 10000;
+            //xOffsetBar.Minimum = -100000; xOffsetBar.Maximum = paintPanel.Width + 100000;
+            //yOffsetBar.Maximum = -100000; yOffsetBar.Maximum = paintPanel.Height + 100000;
+            xOffsetBar.Minimum = int.MinValue; xOffsetBar.Maximum = int.MaxValue;
+            yOffsetBar.Minimum = int.MinValue; yOffsetBar.Maximum = int.MaxValue;
 
             xOffsetBar.Value = paintPanel.Width / 2;
             yOffsetBar.Value = paintPanel.Height / 2;
@@ -59,7 +62,7 @@ namespace TestForm
 
                 if (autoStepBox.Checked)
                 {
-                    double number = FuncDraw.GetNumberFromPixel(5, ViewModel.Scale);
+                    double number = FuncDrawCore.GetNumberFromPixel(5, ViewModel.Scale);
                     int param = (int)Clamp(1d / number, stepBar.Minimum, stepBar.Maximum);
                     this.Invoke((Action)(() => stepBar.Value = param));
                 }
@@ -76,7 +79,13 @@ namespace TestForm
 
             comboBox1.SelectedIndex = 0;
             funcToCalc = funcs[0];
+
+            this.KeyPreview = true;
+            this.KeyDown += (sender, e) => ctrl = e.Control;
+            this.KeyUp += (sender, e) => ctrl = e.Control;
         }
+
+        bool ctrl = false;   // 指示是否按下了Ctrl键
 
         Func<double, double> funcToCalc = (x) => Math.Tan(x);
 
@@ -88,34 +97,39 @@ namespace TestForm
         GraphicsBuffer buffer;
         void DrawFunc(Graphics g)
         {
-            FuncDraw.GetCoordsFromPoint((int)(-0.25 * paintPanel.Width), 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xStart, out _);
-            FuncDraw.GetCoordsFromPoint((int)(paintPanel.Width * 1.25), 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xEnd, out _);
+            int paintWidth = paintPanel.Width,
+                paintHeight = paintPanel.Height,
+                xOffset = ViewModel.XOffset,
+                yOffset = ViewModel.YOffset,
+                scale = ViewModel.Scale;
 
-            var range1 = Lib.Range(0, xStart, ViewModel.Step);
-            var range2 = Lib.Range(0, xEnd, ViewModel.Step);
+            double step = ViewModel.Step;
+
+            FuncDrawCore.GetCoordsFromPoint((int)(-0.0 * paintWidth), 0, xOffset, yOffset, scale, out double xStart, out _);
+            FuncDrawCore.GetCoordsFromPoint((int)(paintWidth * 1.0), 0, xOffset, yOffset, scale, out double xEnd, out _);
+
+            var range1 = Lib.Range(0, xStart - step, step);
+            var range2 = Lib.Range(0, xEnd + step, step);
             var reverse = range1.Reverse();
             var concat = Lib.ConcatEnumerable(reverse, range2);
 
-            FuncDraw.DrawFunc(
+            FuncDrawCore.DrawFunc(
                 funcToCalc,
                 concat,
                 g, pen,
                 new Rectangle(Point.Empty, paintPanel.Size),
                 ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale);
-
-            reverse.GetEnumerator().Dispose();
-            concat.GetEnumerator().Dispose();
         }
         void DrawShaft(Graphics g)
         {
-            FuncDraw.GetCoordsFromPoint(0, 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xLeft, out double yTop);
-            FuncDraw.GetCoordsFromPoint(paintPanel.Width, paintPanel.Height, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xRight, out double yBottom);
-            double step = FuncDraw.GetNumberFromPixel(50, ViewModel.Scale);
+            FuncDrawCore.GetCoordsFromPoint(0, 0, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xLeft, out double yTop);
+            FuncDrawCore.GetCoordsFromPoint(paintPanel.Width, paintPanel.Height, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xRight, out double yBottom);
+            double step = FuncDrawCore.GetNumberFromPixel(50, ViewModel.Scale);
 
             var xRange = Lib.ConcatEnumerable(Lib.Range(0, xLeft, step), Lib.Range(step, xRight, step));
             var yRange = Lib.ConcatEnumerable(Lib.Range(-step, yBottom, step), Lib.Range(step, yTop, step));
 
-            FuncDraw.DrawShaft(
+            FuncDrawCore.DrawShaft(
                 xRange, 
                 yRange, 
                 g, brush, pen, font,
@@ -191,7 +205,28 @@ namespace TestForm
                     moveBarIncrease = true;
             }
         }
+        void ScaleOffset(int scaleOffset, bool stayPoint = true)
+        {
+            Point mousePosition = paintPanel.PointToClient(MousePosition);
 
+            int xOffset = ViewModel.XOffset,
+                yOffset = ViewModel.YOffset,
+                scale = ViewModel.Scale;
+
+            int newScale = (int)Clamp(scale + scaleOffset, scaleBar.Minimum, scaleBar.Maximum);
+
+            if (stayPoint)
+            {
+                FuncDrawCore.GetCoordsFromPoint(mousePosition.X, mousePosition.Y, xOffset, yOffset, scale, out double xCoord, out double yCoord);
+                Point pointOffsetNow = FuncDrawCore.GetPointFromCoords(xCoord, yCoord, xOffset, yOffset, scale);
+                Point pointRelativeOffsetNow = FuncDrawCore.GetPointFromCoords(xCoord, yCoord, 0, 0, scale);
+                Point offset = new Point((int)(pointOffsetNow.X - pointRelativeOffsetNow.X / (double)scale * newScale), (int)(pointOffsetNow.Y - pointRelativeOffsetNow.Y / (double)scale * newScale));
+                xOffsetBar.Value = (int)Clamp(offset.X, xOffsetBar.Minimum, xOffsetBar.Maximum);
+                yOffsetBar.Value = (int)Clamp(offset.Y, yOffsetBar.Minimum, yOffsetBar.Maximum);
+            }
+
+            scaleBar.Value = newScale;
+        }
         private void paintPanel_MouseUp(object sender, MouseEventArgs e)
         {
             offsetMoving = false;
@@ -200,6 +235,7 @@ namespace TestForm
         private void paintPanel_MouseLeave(object sender, EventArgs e)
         {
             offsetMoving = false;
+            ctrl = false;
         }
         double Clamp(double src, double min, double max)    // Math.Clamp在WinForm中似乎没有?
         {
@@ -213,7 +249,7 @@ namespace TestForm
 
         private void PaintPanel_MouseWheel(object sender, MouseEventArgs e)        // 当鼠标在面板内滚动时, 调整缩放
         {
-            scaleBar.Value = (int)Clamp(scaleBar.Value + e.Delta, scaleBar.Minimum, scaleBar.Maximum);
+            ScaleOffset(e.Delta, !ctrl);
 
             if (e.Delta != 0)
                 DrawAll();
@@ -262,7 +298,7 @@ namespace TestForm
 
         private void paintPanel_MouseDoubleClick(object sender, MouseEventArgs e)    // 当双击时, 自动调整精度
         {
-            double number = FuncDraw.GetNumberFromPixel(5, ViewModel.Scale);
+            double number = FuncDrawCore.GetNumberFromPixel(5, ViewModel.Scale);
             int param = (int)Clamp(1d / number, stepBar.Minimum, stepBar.Maximum);
             stepBar.Value = param;
         }
