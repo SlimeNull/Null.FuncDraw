@@ -26,7 +26,8 @@ namespace Null.FuncDraw.Model
         public double ScaleNow { get => scale; }
         public Font DefaultFont => defaultFont;
 
-        public Color BackColor { get; set; }
+        public Color BackColor { get; set; } = Color.FromArgb(240, 240, 240);
+        public Color ForeColor { get; set; } = Color.FromArgb(0, 120, 215);
         public double DrawStep { get; set; } = 1;
         public Graphics TargetGraphics { get; set; }
         public Rectangle TargetArea { get; set; }

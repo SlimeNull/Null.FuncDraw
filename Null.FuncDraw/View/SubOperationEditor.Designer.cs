@@ -42,7 +42,7 @@ namespace Null.FuncDraw.View
             this.accept = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.actionGroup = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.descriptionBox = new System.Windows.Forms.TextBox();
             this.actionTypeBox = new System.Windows.Forms.ComboBox();
             this.detailesLabel = new System.Windows.Forms.Label();
             this.typeLabel = new System.Windows.Forms.Label();
@@ -193,7 +193,7 @@ namespace Null.FuncDraw.View
             // 
             this.actionGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.actionGroup.Controls.Add(this.textBox1);
+            this.actionGroup.Controls.Add(this.descriptionBox);
             this.actionGroup.Controls.Add(this.actionTypeBox);
             this.actionGroup.Controls.Add(this.detailesLabel);
             this.actionGroup.Controls.Add(this.typeLabel);
@@ -204,17 +204,17 @@ namespace Null.FuncDraw.View
             this.actionGroup.TabStop = false;
             this.actionGroup.Text = "Action";
             // 
-            // textBox1
+            // descriptionBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.descriptionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(30, 72);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(320, 80);
-            this.textBox1.TabIndex = 3;
+            this.descriptionBox.Location = new System.Drawing.Point(30, 72);
+            this.descriptionBox.Multiline = true;
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.ReadOnly = true;
+            this.descriptionBox.Size = new System.Drawing.Size(320, 80);
+            this.descriptionBox.TabIndex = 3;
             // 
             // actionTypeBox
             // 
@@ -224,6 +224,7 @@ namespace Null.FuncDraw.View
             this.actionTypeBox.Name = "actionTypeBox";
             this.actionTypeBox.Size = new System.Drawing.Size(231, 20);
             this.actionTypeBox.TabIndex = 2;
+            this.actionTypeBox.SelectedIndexChanged += new System.EventHandler(this.actionTypeBox_SelectedIndexChanged);
             // 
             // detailesLabel
             // 
@@ -283,7 +284,7 @@ namespace Null.FuncDraw.View
         private System.Windows.Forms.Label detailesLabel;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.TextBox viceParamBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox descriptionBox;
         public System.Windows.Forms.RadioButton mainFromConstant;
         public System.Windows.Forms.RadioButton viceFromConstant;
         public System.Windows.Forms.RadioButton viceFromVariable;

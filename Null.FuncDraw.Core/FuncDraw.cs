@@ -132,12 +132,6 @@ namespace Null.FuncDraw.Core
                 point1Check.Invoke(point1);
                 point2Check.Invoke(point2);
 
-                if (((!point1xIn1) && (!point2xIn1)) ||
-                    ((!point1xIn2) && (!point2xIn2)) ||
-                    ((!point1yIn1) && (!point2yIn1)) ||
-                    ((!point1yIn2) && (!point2yIn2)))
-                    continue;
-
                 if (!point1xIn1)
                 {
                     point1 = new Point(drawAreaLeft, (int)(point1.Y + (point2.Y - point1.Y) * ((double)drawAreaLeft - point1.X) / (point2.X - point1.X)));
@@ -178,6 +172,9 @@ namespace Null.FuncDraw.Core
                     point2 = new Point((int)(point1.X + (point2.X - point1.X) * ((double)drawAreaBottom - point1.Y) / (point2.Y - point1.Y)), drawAreaBottom);
                     point2Check.Invoke(point2);
                 }
+
+                if (!(point1yIn1 && point1xIn2 && point1yIn1 && point1yIn2 && point2xIn1 && point2xIn2 && point2yIn1 && point2yIn2))
+                    continue;
 
                 graphics.DrawLine(pen, point1, point2);
             }

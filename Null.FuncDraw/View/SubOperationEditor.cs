@@ -138,5 +138,10 @@ namespace Null.FuncDraw.View
             mainParamBox.Enabled = mainFromVariable.Checked || mainFromConstant.Checked;
             viceParamBox.Enabled = viceFromVariable.Checked || viceFromConstant.Checked;
         }
+
+        private void actionTypeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            descriptionBox.Text = SubOperationManager.GetOperationDescription(actionTypeBox.Text);
+        }
     }
 }

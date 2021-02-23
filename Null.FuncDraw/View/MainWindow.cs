@@ -57,6 +57,7 @@ namespace Null.FuncDraw.View
             this.KeyDown += (sender, e) => ctrl = e.Control;
             this.KeyUp += (sender, e) => ctrl = e.Control;
 
+
             scaleBar.ScrollEnd += NTrackBar_ValueRestore;
             xOffsetBar.ScrollEnd += NTrackBar_ValueRestore;
             yOffsetBar.ScrollEnd += NTrackBar_ValueRestore;
