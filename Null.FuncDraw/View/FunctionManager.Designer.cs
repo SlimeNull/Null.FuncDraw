@@ -29,6 +29,7 @@ namespace Null.FuncDraw.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FunctionManager));
             this.functionList = new System.Windows.Forms.ListBox();
             this.close = new System.Windows.Forms.Button();
             this.remove = new System.Windows.Forms.Button();
@@ -39,75 +40,49 @@ namespace Null.FuncDraw.View
             // 
             // functionList
             // 
-            this.functionList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.functionList, "functionList");
             this.functionList.FormattingEnabled = true;
-            this.functionList.ItemHeight = 12;
-            this.functionList.Location = new System.Drawing.Point(12, 12);
             this.functionList.Name = "functionList";
-            this.functionList.Size = new System.Drawing.Size(329, 448);
-            this.functionList.TabIndex = 0;
             // 
             // close
             // 
-            this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.close.Location = new System.Drawing.Point(347, 408);
+            resources.ApplyResources(this.close, "close");
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(75, 23);
-            this.close.TabIndex = 1;
-            this.close.Text = "Close";
             this.close.UseVisualStyleBackColor = true;
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // remove
             // 
-            this.remove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.remove.Location = new System.Drawing.Point(347, 379);
+            resources.ApplyResources(this.remove, "remove");
             this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(75, 23);
-            this.remove.TabIndex = 2;
-            this.remove.Text = "Remove";
             this.remove.UseVisualStyleBackColor = true;
             this.remove.Click += new System.EventHandler(this.remove_Click);
             // 
             // append
             // 
-            this.append.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.append.Location = new System.Drawing.Point(347, 321);
+            resources.ApplyResources(this.append, "append");
             this.append.Name = "append";
-            this.append.Size = new System.Drawing.Size(75, 23);
-            this.append.TabIndex = 5;
-            this.append.Text = "Append";
             this.append.UseVisualStyleBackColor = true;
             this.append.Click += new System.EventHandler(this.append_Click);
             // 
             // modify
             // 
-            this.modify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.modify.Location = new System.Drawing.Point(347, 350);
+            resources.ApplyResources(this.modify, "modify");
             this.modify.Name = "modify";
-            this.modify.Size = new System.Drawing.Size(75, 23);
-            this.modify.TabIndex = 6;
-            this.modify.Text = "Modify";
             this.modify.UseVisualStyleBackColor = true;
             this.modify.Click += new System.EventHandler(this.modify_Click);
             // 
             // accept
             // 
-            this.accept.Location = new System.Drawing.Point(347, 437);
+            resources.ApplyResources(this.accept, "accept");
             this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(75, 23);
-            this.accept.TabIndex = 14;
-            this.accept.Text = "Accept";
             this.accept.UseVisualStyleBackColor = true;
             this.accept.Click += new System.EventHandler(this.accept_Click);
             // 
             // FunctionManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 473);
             this.Controls.Add(this.accept);
             this.Controls.Add(this.modify);
             this.Controls.Add(this.append);
@@ -117,7 +92,6 @@ namespace Null.FuncDraw.View
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FunctionManager";
-            this.Text = "FunctionManager";
             this.Load += new System.EventHandler(this.FunctionManager_Load);
             this.ResumeLayout(false);
 

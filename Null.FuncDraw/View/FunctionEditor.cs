@@ -24,7 +24,7 @@ namespace Null.FuncDraw.View
 
         private void accept_Click(object sender, EventArgs e)
         {
-            CalcFunction result = new CalcFunction();
+            CalcFunction result = new CalcFunction(funcNameBox.Text);
             result.Operations.AddRange(operationList.Items.OfType<ISubOperation>());
             result.ForeCore = colorPanel.BackColor;
 
@@ -102,10 +102,15 @@ namespace Null.FuncDraw.View
             {
                 operationList.Items.AddRange(Function.Operations.ToArray());
                 colorPanel.BackColor = Function.ForeCore;
+
+                this.funcNameBox.Text = Function.FunctionName;
             }
             else
             {
                 colorPanel.BackColor = Color.FromArgb(RandomInt(0, 200), RandomInt(0, 200), RandomInt(0, 200));
+
+                DateTime now = DateTime.Now;
+                this.funcNameBox.Text = $"T-{now.Day}-{now.Hour}-{now.Minute}-{now.Second}";
             }
         }
 

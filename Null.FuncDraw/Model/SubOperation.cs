@@ -81,6 +81,26 @@ namespace Null.FuncDraw.Model
             return getViceParamFunc.Invoke();
         }
 
+        public bool RequireParamSource(SOParamType paramType)
+        {
+            switch (paramType)
+            {
+                case SOParamType.FromVariable:
+                case SOParamType.FromConstant:
+                    return true;
+                case SOParamType.FromLast:
+                default:
+                    return false;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{GetType().Name}" +
+                $" MainParam:{(RequireParamSource(MainParamType) ? $"'{MainParamSource}'" : MainParamType)}" +
+                $" ViceParam:{(RequireParamSource(ViceParamType) ? $"'{ViceParamSource}'" : ViceParamType)}";
+        }
+
         public abstract Func<double> GetFunc();
     }
     public class SubOperationOption

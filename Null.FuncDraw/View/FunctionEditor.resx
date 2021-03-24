@@ -117,4 +117,283 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;operationList.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="append.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>434, 473</value>
+  </data>
+  <data name="&gt;&gt;moveDown.Name" xml:space="preserve">
+    <value>moveDown</value>
+  </data>
+  <data name="operationList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;operationList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="close.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="colorPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;funcNameBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;remove.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;modify.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;accept.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="moveUp.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="moveDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 351</value>
+  </data>
+  <data name="close.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;modify.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;close.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;accept.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="modify.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="moveUp.Text" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="&gt;&gt;close.Name" xml:space="preserve">
+    <value>close</value>
+  </data>
+  <data name="&gt;&gt;funcNameBox.Name" xml:space="preserve">
+    <value>funcNameBox</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="&gt;&gt;moveUp.Name" xml:space="preserve">
+    <value>moveUp</value>
+  </data>
+  <data name="&gt;&gt;append.Name" xml:space="preserve">
+    <value>append</value>
+  </data>
+  <data name="moveDown.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="operationList.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;close.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="accept.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 438</value>
+  </data>
+  <data name="&gt;&gt;modify.Name" xml:space="preserve">
+    <value>modify</value>
+  </data>
+  <data name="moveUp.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;modify.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="append.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 264</value>
+  </data>
+  <data name="&gt;&gt;append.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="append.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="operationList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="moveDown.Text" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="&gt;&gt;moveDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="modify.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="remove.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="remove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;accept.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="close.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;moveDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;funcNameBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;remove.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="operationList.ItemHeight" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="modify.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 293</value>
+  </data>
+  <data name="moveUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;moveUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="append.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="remove.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="accept.Text" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="moveDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="remove.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="&gt;&gt;append.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="modify.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;moveUp.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="funcNameBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 440</value>
+  </data>
+  <data name="&gt;&gt;remove.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;close.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="accept.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="colorPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 223</value>
+  </data>
+  <data name="&gt;&gt;funcNameBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.Name" xml:space="preserve">
+    <value>colorPanel</value>
+  </data>
+  <data name="&gt;&gt;append.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;accept.Name" xml:space="preserve">
+    <value>accept</value>
+  </data>
+  <data name="moveUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 322</value>
+  </data>
+  <data name="operationList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>329, 424</value>
+  </data>
+  <data name="append.Text" xml:space="preserve">
+    <value>Append</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FunctionEditor</value>
+  </data>
+  <data name="funcNameBox.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Edit Function</value>
+  </data>
+  <data name="&gt;&gt;moveUp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;operationList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="accept.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;operationList.Name" xml:space="preserve">
+    <value>operationList</value>
+  </data>
+  <data name="remove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 380</value>
+  </data>
+  <data name="close.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="funcNameBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 21</value>
+  </data>
+  <data name="moveDown.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="close.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 409</value>
+  </data>
+  <data name="&gt;&gt;moveDown.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;colorPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="colorPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 24</value>
+  </data>
+  <data name="&gt;&gt;remove.Name" xml:space="preserve">
+    <value>remove</value>
+  </data>
+  <data name="modify.Text" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>zh</value>
+  </metadata>
 </root>

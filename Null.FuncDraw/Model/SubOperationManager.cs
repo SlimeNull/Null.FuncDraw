@@ -76,18 +76,18 @@ namespace Null.FuncDraw.Model
                 "MulOperation" => "Multiply main parameter and vice parameter, then return the result.",
                 "DivOperation" => "Divide main parameter by the vice parameter, then return the result",
 
-                "SinOperation" => "Use Math.Sin function to evaluate and return the result",
-                "CosOperation" => "Use Math.Cos function to evaluate and return the result",
-                "TanOperation" => "Use Math.Tan function to evaluate and return the result",
-                "AsinOperation" => "Use Math.Asin function to evaluate and return the result",
-                "AcosOperation" => "Use Math.Acos function to evaluate and return the result",
-                "AtanOperation" => "Use Math.Atan function to evaluate and return the result",
-                "SinhOperation" => "Use Math.Sinh function to evaluate and return the result",
-                "CoshOperation" => "Use Math.Cosh function to evaluate and return the result",
-                "TanhOperation" => "Use Math.Tanh function to evaluate and return the result",
+                "SinOperation" => "Returns the sine of the specified angle.  \nMain parameter: the angle.",
+                "CosOperation" => "Returns the cosine of the specified angle.  \nMain parameter: the angle.",
+                "TanOperation" => "Returns the tangent of the specified angle.  \nMain parameter: the angle.",
+                "AsinOperation" => "Returns the angle whose sine is the specified number.\n  Main parameter: A number representing a sine, where d must be greater than or equal to -1, but less than or equal to 1.",
+                "AcosOperation" => "Returns the angle whose cosine is the specified number.\n  Main parameter: A number representing a cosine, where d must be greater than or equal to - 1, but less than or equal to 1.",
+                "AtanOperation" => "Returns the angle whose tangent is the specified number.\n  Main parameter: A number representing a tangent.",
+                "SinhOperation" => "Returns the hyperbolic sine of the specified angle.\n  Main parameter: An angle, measured in radians.",
+                "CoshOperation" => "Returns the hyperbolic cosine of the specified angle.\n  Main parameter: An angle, measured in radians.",
+                "TanhOperation" => "Returns the hyperbolic tangent of the specified angle.\n  Main parameter: An angle, measured in radians.",
 
-                "PowOperation" => "Use Math.Pow function to evaluate and return the result",
-                "LogOperation" => "Use Math.Log function to evaluate and return the result",
+                "PowOperation" => "Returns a specified number raised to the specified power.\n  Main parameter: A double-precision floating-point number to be raised to a power.\n  Vice parameter: A double-precision floating-point number that specifies a power.",
+                "LogOperation" => "Returns the logarithm of a specified number in a specified base.\n  Main parameter: The number whose logarithm is to be found.\n  Vice parameter: The base of the logarithm.",
                 _ => "Unknown Operation!"
             };
         }

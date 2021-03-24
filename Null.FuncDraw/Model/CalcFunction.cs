@@ -13,10 +13,25 @@ namespace Null.FuncDraw.Model
         public CalcFunction()
         {
             operations = new List<ISubOperation>();
+
+            DateTime time = DateTime.Now;
+            FunctionName = $"T-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}";
+        }
+
+        public CalcFunction(string name)
+        {
+            operations = new List<ISubOperation>();
+            FunctionName = name;
         }
 
         public Color ForeCore { get; set; }
+        public string FunctionName { get; set; }
         public List<ISubOperation> Operations => operations;
+
+        public override string ToString()
+        {
+            return $"Function Name:{FunctionName} OperationCount:{operations.Count}";
+        }
 
         public double Calculate(double input)
         {

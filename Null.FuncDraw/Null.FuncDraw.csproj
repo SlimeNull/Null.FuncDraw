@@ -244,13 +244,25 @@
     <EmbeddedResource Include="View\FunctionEditor.resx">
       <DependentUpon>FunctionEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FunctionEditor.zh.resx">
+      <DependentUpon>FunctionEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FunctionManager.resx">
+      <DependentUpon>FunctionManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FunctionManager.zh.resx">
       <DependentUpon>FunctionManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MainWindow.zh.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SubOperationEditor.resx">
+      <DependentUpon>SubOperationEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SubOperationEditor.zh.resx">
       <DependentUpon>SubOperationEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />

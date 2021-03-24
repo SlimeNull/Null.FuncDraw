@@ -235,5 +235,20 @@ namespace Null.FuncDraw.Core
                 drawText(numBase, y);
             }
         }
+
+        public static void DrawWhole(Rectangle rect, Graphics g)
+        {
+
+        }
+    }
+    public struct FuncImageInfo
+    {
+        public int XOffset { get; set; }
+        public int YOffset { get; set; }
+        public double Scale { get; set; }
+
+        public double Precition { get; set; }           // 一个像素是多少
+
+
     }
 }

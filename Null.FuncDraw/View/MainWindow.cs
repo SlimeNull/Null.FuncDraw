@@ -154,6 +154,8 @@ namespace Null.FuncDraw.View
 
         private void paintPanel_Resize(object sender, EventArgs e)
         {
+            if (funcDrawManager == null)
+                return;
             Graphics graphicsNow = funcDrawManager.TargetGraphics;
             if (graphicsNow != null)
                 graphicsNow.Dispose();

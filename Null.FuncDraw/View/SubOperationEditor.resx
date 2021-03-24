@@ -117,4 +117,475 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;viceFromVariable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;typeLabel.Name" xml:space="preserve">
+    <value>typeLabel</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="mainFromConstant.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 52</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="paramGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="viceParamBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="viceFromLast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 16</value>
+  </data>
+  <data name="&gt;&gt;typeLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;mainParamsGroup.Name" xml:space="preserve">
+    <value>mainParamsGroup</value>
+  </data>
+  <data name="&gt;&gt;actionGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainParamBox.Parent" xml:space="preserve">
+    <value>mainParamsGroup</value>
+  </data>
+  <data name="&gt;&gt;cancel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="viceFromConstant.Text" xml:space="preserve">
+    <value>From Constant</value>
+  </data>
+  <data name="&gt;&gt;viceParamBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;mainFromConstant.Name" xml:space="preserve">
+    <value>mainFromConstant</value>
+  </data>
+  <data name="viceFromVariable.Text" xml:space="preserve">
+    <value>From Variable</value>
+  </data>
+  <data name="&gt;&gt;viceFromConstant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;mainParamBox.Name" xml:space="preserve">
+    <value>mainParamBox</value>
+  </data>
+  <data name="actionGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="&gt;&gt;actionGroup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;mainFromLast.Parent" xml:space="preserve">
+    <value>mainParamsGroup</value>
+  </data>
+  <data name="mainFromConstant.Text" xml:space="preserve">
+    <value>From Constant</value>
+  </data>
+  <data name="viceParamBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 21</value>
+  </data>
+  <data name="accept.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="detailesLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 48</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Edit Sub Operation</value>
+  </data>
+  <data name="mainFromVariable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 16</value>
+  </data>
+  <data name="&gt;&gt;viceFromLast.Parent" xml:space="preserve">
+    <value>paramGroup</value>
+  </data>
+  <data name="&gt;&gt;detailesLabel.Parent" xml:space="preserve">
+    <value>actionGroup</value>
+  </data>
+  <data name="mainParamsGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 189</value>
+  </data>
+  <data name="accept.Text" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="&gt;&gt;mainFromVariable.Name" xml:space="preserve">
+    <value>mainFromVariable</value>
+  </data>
+  <data name="&gt;&gt;descriptionBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;accept.Name" xml:space="preserve">
+    <value>accept</value>
+  </data>
+  <data name="typeLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="mainFromLast.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;viceParamBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="paramGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;detailesLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;actionGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;mainFromConstant.Parent" xml:space="preserve">
+    <value>mainParamsGroup</value>
+  </data>
+  <data name="viceParamBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;mainFromVariable.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;typeLabel.Parent" xml:space="preserve">
+    <value>actionGroup</value>
+  </data>
+  <data name="&gt;&gt;viceFromConstant.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;viceParamBox.Name" xml:space="preserve">
+    <value>viceParamBox</value>
+  </data>
+  <data name="mainParamBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 82</value>
+  </data>
+  <data name="mainFromLast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 25</value>
+  </data>
+  <data name="&gt;&gt;paramGroup.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="actionGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;paramGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="actionTypeBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;actionTypeBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;detailesLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="viceFromLast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 25</value>
+  </data>
+  <data name="&gt;&gt;paramGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="viceFromVariable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 52</value>
+  </data>
+  <data name="&gt;&gt;accept.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="mainParamBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="mainParamBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;mainFromVariable.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="viceParamBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="viceFromLast.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="actionGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 171</value>
+  </data>
+  <data name="viceFromVariable.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;viceFromVariable.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SubOperationEditor</value>
+  </data>
+  <data name="mainFromConstant.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;typeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="actionTypeBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 19</value>
+  </data>
+  <data name="mainFromVariable.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;mainFromLast.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;mainParamsGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="cancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;paramGroup.Name" xml:space="preserve">
+    <value>paramGroup</value>
+  </data>
+  <data name="&gt;&gt;accept.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="paramGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 315</value>
+  </data>
+  <data name="&gt;&gt;mainFromConstant.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;detailesLabel.Name" xml:space="preserve">
+    <value>detailesLabel</value>
+  </data>
+  <data name="&gt;&gt;mainParamsGroup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;actionGroup.Name" xml:space="preserve">
+    <value>actionGroup</value>
+  </data>
+  <data name="actionGroup.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="descriptionBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 72</value>
+  </data>
+  <data name="viceFromLast.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="typeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 12</value>
+  </data>
+  <data name="viceFromConstant.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 52</value>
+  </data>
+  <data name="mainFromVariable.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="typeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 22</value>
+  </data>
+  <data name="&gt;&gt;mainFromConstant.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="accept.Location" type="System.Drawing.Point, System.Drawing">
+    <value>317, 438</value>
+  </data>
+  <data name="descriptionBox.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="detailesLabel.Text" xml:space="preserve">
+    <value>Details:</value>
+  </data>
+  <data name="detailesLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="detailesLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;mainFromVariable.Parent" xml:space="preserve">
+    <value>mainParamsGroup</value>
+  </data>
+  <data name="&gt;&gt;viceFromLast.Name" xml:space="preserve">
+    <value>viceFromLast</value>
+  </data>
+  <data name="&gt;&gt;mainParamBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="mainParamsGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 117</value>
+  </data>
+  <data name="viceFromConstant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 16</value>
+  </data>
+  <data name="mainParamBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 438</value>
+  </data>
+  <data name="mainParamsGroup.Text" xml:space="preserve">
+    <value>Main Parameter</value>
+  </data>
+  <data name="paramGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 117</value>
+  </data>
+  <data name="viceFromConstant.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="paramGroup.Text" xml:space="preserve">
+    <value>Vice Parameter</value>
+  </data>
+  <data name="typeLabel.Text" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="&gt;&gt;actionTypeBox.Name" xml:space="preserve">
+    <value>actionTypeBox</value>
+  </data>
+  <data name="&gt;&gt;viceFromVariable.Name" xml:space="preserve">
+    <value>viceFromVariable</value>
+  </data>
+  <data name="mainFromVariable.Text" xml:space="preserve">
+    <value>From Variable</value>
+  </data>
+  <data name="actionTypeBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 20</value>
+  </data>
+  <data name="&gt;&gt;viceFromConstant.Name" xml:space="preserve">
+    <value>viceFromConstant</value>
+  </data>
+  <data name="descriptionBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 80</value>
+  </data>
+  <data name="mainParamBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 21</value>
+  </data>
+  <data name="viceParamBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 82</value>
+  </data>
+  <data name="&gt;&gt;viceFromLast.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="mainFromLast.Text" xml:space="preserve">
+    <value>From Last Operation Result</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mainFromConstant.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="descriptionBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;mainParamBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mainFromVariable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 52</value>
+  </data>
+  <data name="&gt;&gt;cancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;viceFromLast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cancel.Name" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="mainParamsGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="accept.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;descriptionBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="descriptionBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="mainFromLast.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;viceParamBox.Parent" xml:space="preserve">
+    <value>paramGroup</value>
+  </data>
+  <data name="&gt;&gt;actionTypeBox.Parent" xml:space="preserve">
+    <value>actionGroup</value>
+  </data>
+  <data name="&gt;&gt;descriptionBox.Parent" xml:space="preserve">
+    <value>actionGroup</value>
+  </data>
+  <data name="&gt;&gt;viceFromConstant.Parent" xml:space="preserve">
+    <value>paramGroup</value>
+  </data>
+  <data name="viceFromVariable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 16</value>
+  </data>
+  <data name="mainFromConstant.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 16</value>
+  </data>
+  <data name="viceFromConstant.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;descriptionBox.Name" xml:space="preserve">
+    <value>descriptionBox</value>
+  </data>
+  <data name="mainFromLast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 16</value>
+  </data>
+  <data name="detailesLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="actionGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;mainParamsGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;viceFromVariable.Parent" xml:space="preserve">
+    <value>paramGroup</value>
+  </data>
+  <data name="mainParamsGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;mainFromLast.Name" xml:space="preserve">
+    <value>mainFromLast</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>404, 473</value>
+  </data>
+  <data name="&gt;&gt;accept.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="viceFromLast.Text" xml:space="preserve">
+    <value>From Last Operation Result</value>
+  </data>
+  <data name="typeLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;mainFromLast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="viceFromVariable.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;actionTypeBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>zh</value>
+  </metadata>
 </root>
