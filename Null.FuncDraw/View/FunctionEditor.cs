@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Null.FuncDraw.Model;
+using Null.FuncDraw.Utils;
 
 namespace Null.FuncDraw.View
 {
@@ -20,11 +21,11 @@ namespace Null.FuncDraw.View
             this.Shown += (sender, e) => this.Location = new Point(parent.Left + (parent.Width - this.Width) / 2, parent.Top + (parent.Height - this.Height) / 2);
         }
 
-        public CalcFunction Function { get; set; }
+        public ChainOptCalcFunction Function { get; set; }
 
         private void accept_Click(object sender, EventArgs e)
         {
-            CalcFunction result = new CalcFunction(funcNameBox.Text);
+            ChainOptCalcFunction result = new ChainOptCalcFunction(funcNameBox.Text);
             result.Operations.AddRange(operationList.Items.OfType<ISubOperation>());
             result.ForeCore = colorPanel.BackColor;
 
@@ -107,20 +108,11 @@ namespace Null.FuncDraw.View
             }
             else
             {
-                colorPanel.BackColor = Color.FromArgb(RandomInt(0, 200), RandomInt(0, 200), RandomInt(0, 200));
+                colorPanel.BackColor = Color.FromArgb(NumUtil.RandomInt(0, 200), NumUtil.RandomInt(0, 200), NumUtil.RandomInt(0, 200));
 
                 DateTime now = DateTime.Now;
                 this.funcNameBox.Text = $"T-{now.Day}-{now.Hour}-{now.Minute}-{now.Second}";
             }
-        }
-
-        int RandomInt(int min, int max)
-        {
-            return new Random(Guid.NewGuid().GetHashCode()).Next(min, max);
-        }
-        int Color2Int(Color color)
-        {
-            return color.R | color.G << 8 | color.B << 16;
         }
         private void colorPanel_Click(object sender, EventArgs e)
         {
@@ -143,7 +135,7 @@ namespace Null.FuncDraw.View
                     Color.FromArgb(247, 99, 165),
                     Color.FromArgb(0, 215, 175),
                     Color.FromArgb(176, 254, 230),
-                }.Select((v) => Color2Int(v)).ToArray(),
+                }.Select((v) => ColorUtil.Color2Int(v)).ToArray(),
 
                 FullOpen = true,
             };

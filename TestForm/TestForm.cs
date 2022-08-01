@@ -11,6 +11,7 @@ using TestForm.ViewModel;
 using Null.FuncDraw;
 using Null.Library;
 using Null.FuncDraw.Core;
+using NullLib.Range;
 
 namespace TestForm
 {
@@ -108,8 +109,8 @@ namespace TestForm
             FuncDrawCore.GetCoordsFromPoint((int)(-0.0 * paintWidth), 0, xOffset, yOffset, scale, out double xStart, out _);
             FuncDrawCore.GetCoordsFromPoint((int)(paintWidth * 1.0), 0, xOffset, yOffset, scale, out double xEnd, out _);
 
-            var range1 = Lib.Range(0, xStart - step, step);
-            var range2 = Lib.Range(0, xEnd + step, step);
+            var range1 = NRange.Range(0, xStart - step, step);
+            var range2 = NRange.Range(0, xEnd + step, step);
             var reverse = range1.Reverse();
             var concat = Lib.ConcatEnumerable(reverse, range2);
 
@@ -126,8 +127,8 @@ namespace TestForm
             FuncDrawCore.GetCoordsFromPoint(paintPanel.Width, paintPanel.Height, ViewModel.XOffset, ViewModel.YOffset, ViewModel.Scale, out double xRight, out double yBottom);
             double step = FuncDrawCore.GetNumberFromPixel(50, ViewModel.Scale);
 
-            var xRange = Lib.ConcatEnumerable(Lib.Range(0, xLeft, step), Lib.Range(step, xRight, step));
-            var yRange = Lib.ConcatEnumerable(Lib.Range(-step, yBottom, step), Lib.Range(step, yTop, step));
+            var xRange = Lib.ConcatEnumerable(NRange.Range(0, xLeft, step), NRange.Range(step, xRight, step));
+            var yRange = Lib.ConcatEnumerable(NRange.Range(-step, yBottom, step), NRange.Range(step, yTop, step));
 
             FuncDrawCore.DrawShaft(
                 xRange, 
@@ -305,7 +306,7 @@ namespace TestForm
 
         private void button1_Click(object sender, EventArgs e)      // 当测试按钮按下时, 执行临时要执行的测试代码
         {
-            IEnumerable<int> enumerable = Lib.ConcatEnumerable(Lib.Range(10), Lib.Range(-10), Lib.Range(-10, 0));
+            IEnumerable<int> enumerable = Lib.ConcatEnumerable(NRange.Range(10), NRange.Range(-10), NRange.Range(-10, 0));
             MessageBox.Show($"[{String.Join(", ", enumerable.ToList())}]");
         }
     }

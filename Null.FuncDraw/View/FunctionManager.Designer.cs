@@ -36,6 +36,15 @@ namespace Null.FuncDraw.View
             this.append = new System.Windows.Forms.Button();
             this.modify = new System.Windows.Forms.Button();
             this.accept = new System.Windows.Forms.Button();
+            this.useExpr = new System.Windows.Forms.CheckBox();
+            this.exprInputPn = new System.Windows.Forms.Panel();
+            this.exprColorPn = new System.Windows.Forms.Panel();
+            this.exprFuncNameInputTip = new System.Windows.Forms.Label();
+            this.exprFuncNameInputBox = new System.Windows.Forms.TextBox();
+            this.exprInputBox = new System.Windows.Forms.TextBox();
+            this.exprInputCancel = new System.Windows.Forms.Button();
+            this.exprInputOk = new System.Windows.Forms.Button();
+            this.exprInputPn.SuspendLayout();
             this.SuspendLayout();
             // 
             // functionList
@@ -79,10 +88,69 @@ namespace Null.FuncDraw.View
             this.accept.UseVisualStyleBackColor = true;
             this.accept.Click += new System.EventHandler(this.accept_Click);
             // 
+            // useExpr
+            // 
+            resources.ApplyResources(this.useExpr, "useExpr");
+            this.useExpr.Checked = true;
+            this.useExpr.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.useExpr.Name = "useExpr";
+            this.useExpr.UseVisualStyleBackColor = true;
+            // 
+            // exprInputPn
+            // 
+            this.exprInputPn.Controls.Add(this.exprColorPn);
+            this.exprInputPn.Controls.Add(this.exprFuncNameInputTip);
+            this.exprInputPn.Controls.Add(this.exprFuncNameInputBox);
+            this.exprInputPn.Controls.Add(this.exprInputBox);
+            this.exprInputPn.Controls.Add(this.exprInputCancel);
+            this.exprInputPn.Controls.Add(this.exprInputOk);
+            resources.ApplyResources(this.exprInputPn, "exprInputPn");
+            this.exprInputPn.Name = "exprInputPn";
+            this.exprInputPn.VisibleChanged += new System.EventHandler(this.exprInputPn_VisibleChanged);
+            // 
+            // exprColorPn
+            // 
+            resources.ApplyResources(this.exprColorPn, "exprColorPn");
+            this.exprColorPn.Name = "exprColorPn";
+            this.exprColorPn.Click += new System.EventHandler(this.exprColorPn_Click);
+            // 
+            // exprFuncNameInputTip
+            // 
+            resources.ApplyResources(this.exprFuncNameInputTip, "exprFuncNameInputTip");
+            this.exprFuncNameInputTip.BackColor = System.Drawing.SystemColors.Window;
+            this.exprFuncNameInputTip.Name = "exprFuncNameInputTip";
+            // 
+            // exprFuncNameInputBox
+            // 
+            resources.ApplyResources(this.exprFuncNameInputBox, "exprFuncNameInputBox");
+            this.exprFuncNameInputBox.Name = "exprFuncNameInputBox";
+            this.exprFuncNameInputBox.TextChanged += new System.EventHandler(this.exprFuncNameInputBox_TextChanged);
+            // 
+            // exprInputBox
+            // 
+            resources.ApplyResources(this.exprInputBox, "exprInputBox");
+            this.exprInputBox.Name = "exprInputBox";
+            // 
+            // exprInputCancel
+            // 
+            resources.ApplyResources(this.exprInputCancel, "exprInputCancel");
+            this.exprInputCancel.Name = "exprInputCancel";
+            this.exprInputCancel.UseVisualStyleBackColor = true;
+            this.exprInputCancel.Click += new System.EventHandler(this.exprInputCancel_Click);
+            // 
+            // exprInputOk
+            // 
+            resources.ApplyResources(this.exprInputOk, "exprInputOk");
+            this.exprInputOk.Name = "exprInputOk";
+            this.exprInputOk.UseVisualStyleBackColor = true;
+            this.exprInputOk.Click += new System.EventHandler(this.exprInputOk_Click);
+            // 
             // FunctionManager
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.exprInputPn);
+            this.Controls.Add(this.useExpr);
             this.Controls.Add(this.accept);
             this.Controls.Add(this.modify);
             this.Controls.Add(this.append);
@@ -93,7 +161,10 @@ namespace Null.FuncDraw.View
             this.MinimizeBox = false;
             this.Name = "FunctionManager";
             this.Load += new System.EventHandler(this.FunctionManager_Load);
+            this.exprInputPn.ResumeLayout(false);
+            this.exprInputPn.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -105,5 +176,13 @@ namespace Null.FuncDraw.View
         private System.Windows.Forms.Button append;
         private System.Windows.Forms.Button modify;
         private System.Windows.Forms.Button accept;
+        private CheckBox useExpr;
+        private Panel exprInputPn;
+        private Label exprFuncNameInputTip;
+        private TextBox exprFuncNameInputBox;
+        private TextBox exprInputBox;
+        private Button exprInputCancel;
+        private Button exprInputOk;
+        private Panel exprColorPn;
     }
 }

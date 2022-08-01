@@ -14,7 +14,7 @@ namespace Null.FuncDraw.View
 {
     public partial class MainWindow : Form
     {
-        private Timer autoRefreshTimer;
+        private System.Windows.Forms.Timer autoRefreshTimer;
         private FunctionManager functionManagerForm;
         private FuncDrawManager funcDrawManager;
 
@@ -43,7 +43,7 @@ namespace Null.FuncDraw.View
             };
             funcDrawManager.UpdateBuffer();
 
-            autoRefreshTimer = new Timer() { Interval = 30 };
+            autoRefreshTimer = new System.Windows.Forms.Timer() { Interval = 30 };
             autoRefreshTimer.Tick += (sender, e) =>
             {
                 funcDrawManager.RefreshAll();
@@ -65,12 +65,12 @@ namespace Null.FuncDraw.View
 
         private void NTrackBar_ValueRestore(object sender, EventArgs e)
         {
-            NTrackBar trackBar = sender as NTrackBar;
+            NTrackBar trackBar = (sender as NTrackBar)!;
             if (trackBar != null)
                 trackBar.Value = 0;
         }
 
-        public CalcFunction[] Functions { get => funcDrawManager.Functions; set => funcDrawManager.Functions = value; }
+        public CalcFunctionBase[] Functions { get => funcDrawManager.Functions; set => funcDrawManager.Functions = value; }
 
         private void Manager_Click(object sender, EventArgs e)
         {

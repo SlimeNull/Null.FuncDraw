@@ -6,36 +6,6 @@ namespace Null.Library
 {
     public static partial class Lib
     {
-        //public static IEnumerator ConcatEnumerator(IEnumerator enumerator1, IEnumerator enumerator2)
-        //{
-        //    return new ComplexEnumerator(enumerator1, enumerator2);
-        //}
-        //public static IEnumerator<T> ConcatEnumerator<T>(IEnumerator<T> enumerator1, IEnumerator<T> enumerator2)
-        //{
-        //    return new ComplexEnumerator<T>(enumerator1, enumerator2);
-        //}
-        //public static IEnumerator ConcatEnumerator(params IEnumerator[] enumerators)
-        //{
-        //    if (enumerators.Length == 0)
-        //        return null;
-
-        //    IEnumerator result = enumerators[0];
-        //    for (int i = 1, len = enumerators.Length; i < len; i++)
-        //        result = ConcatEnumerator(result, enumerators[i]);
-
-        //    return result;
-        //}
-        //public static IEnumerator<T> ConcatEnumerator<T>(params IEnumerator<T>[] enumerators)
-        //{
-        //    if (enumerators.Length == 0)
-        //        return null;
-
-        //    IEnumerator<T> result = enumerators[0];
-        //    for (int i = 1, len = enumerators.Length; i < len; i++)
-        //        result = ConcatEnumerator(result, enumerators[i]);
-
-        //    return result;
-        //}
         public static IEnumerable ConcatEnumerable(IEnumerable enumerable1, IEnumerable enumerable2)
         {
             return new ComplexIterator<object>(enumerable1, enumerable2);

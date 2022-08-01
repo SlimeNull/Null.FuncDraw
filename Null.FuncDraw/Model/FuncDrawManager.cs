@@ -1,4 +1,4 @@
-﻿using Null.Library;
+﻿using Null.FuncDraw.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,7 +11,7 @@ namespace Null.FuncDraw.Model
     public class FuncDrawManager
     {
         BufferedGraphics buffer;
-        CalcFunction[] functions = Array.Empty<CalcFunction>();
+        CalcFunctionBase[] functions = Array.Empty<CalcFunctionBase>();
 
         Point offset;
         double scale = 1;
@@ -31,7 +31,7 @@ namespace Null.FuncDraw.Model
         public double DrawStep { get; set; } = 1;
         public Graphics TargetGraphics { get; set; }
         public Rectangle TargetArea { get; set; }
-        public CalcFunction[] Functions
+        public CalcFunctionBase[] Functions
         {
             get => functions;
             set
@@ -88,10 +88,10 @@ namespace Null.FuncDraw.Model
                 Core.FuncDrawCore.GetCoordsFromPoint((int)(-0.0 * TargetArea.Width), 0, offset.X, offset.Y, scale, out double xStart, out _);
                 Core.FuncDrawCore.GetCoordsFromPoint((int)(TargetArea.Width * 1.0), 0, offset.X, offset.Y, scale, out double xEnd, out _);
 
-                foreach (CalcFunction func in functions)
+                foreach (CalcFunctionBase func in functions)
                 {
                     Pen pen = new Pen(func.ForeCore);
-                    Core.FuncDrawCore.DrawFunc(func.Calculate, Lib.Range(xStart, xEnd + DrawStep, DrawStep), buffer.Graphics, pen, TargetArea, offset.X, offset.Y, scale);
+                    Core.FuncDrawCore.DrawFunc(func.Calculate, NumUtil.Range(xStart, xEnd + DrawStep, DrawStep), buffer.Graphics, pen, TargetArea, offset.X, offset.Y, scale);
                     pen.Dispose();
                 }
 
@@ -113,8 +113,8 @@ namespace Null.FuncDraw.Model
                 yTop = ((int)(yTop / thisstep) + 1) * thisstep;         // 
                 yBottom = ((int)(yBottom / thisstep) - 1) * thisstep;   // 
 
-                var xRange = Lib.Range(xLeft, xRight, thisstep).ToList();     // List 似乎更快. 不过我也不知道依据在哪里.
-                var yRange = Lib.Range(yTop, yBottom, thisstep).ToList();
+                var xRange = NumUtil.Range(xLeft, xRight, thisstep).ToList();     // List 似乎更快. 不过我也不知道依据在哪里.
+                var yRange = NumUtil.Range(yTop, yBottom, thisstep).ToList();
 
                 xRange.Remove(0d);
 
